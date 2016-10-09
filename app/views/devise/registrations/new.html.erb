@@ -25,7 +25,17 @@
 
   <div class="field">
     <%= f.label :state, "State" %><br />
-    <%= f.select :state, options_for_select(@states, @user) %>
+    <%= f.select :state, options_for_select(User::STATES) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city, "City" %><br />
+    <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip, "Zip" %><br />
+    <%= f.text_field :zip, autofocus: true %>
   </div>
 
   <div class="field">
@@ -51,8 +61,18 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="row">
+    <%= f.label :seeking_coach, "Are you seeking a coach?" %>
+    <%= f.check_box :seeking_coach %>
+  </div>
+
+  <div class="row">
+    <%= f.label :accept_email, "Can our coaches email you?" %>
+    <%= f.check_box :accept_email %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign Up" %>
   </div>
 <% end %>
 

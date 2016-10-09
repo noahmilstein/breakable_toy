@@ -111,14 +111,14 @@ def fill_out_sign_up_form(user)
   select "NY", from: "State"
   fill_in "City", with: user.city
   fill_in "Zip", with: user.zip
-  select "Yes", from: "Are you seeking a coach?"
-  select "Yes", from: "Can our coaches email you?"
-  click_button "Submit"
+  check "Are you seeking a coach?"
+  check "Can our coaches email you?"
+  click_button "Sign Up"
 end
 
 def user_sign_in(user)
   visit new_user_session_path
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password
-  click_button "Submit"
+  click_button "Sign In"
 end
