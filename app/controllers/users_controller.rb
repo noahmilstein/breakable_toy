@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, except: [:new, :create]
+  before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
 
   def show
     @user = User.find(params[:id])
@@ -7,25 +7,30 @@ class UsersController < ApplicationController
 
   def authorize_user
     unless user_signed_in?
-      flash[:notice] = "Please sign in or sign up in"\
-      " order to view this video and its commentary"
-      redirect_to root_path
+      flash[:notice] = "Please sign in first"
+      redirect_to unauthenticated_root_path
     end
   end
-  #
-  # private
-  #
-  # def user_params
-  #   params.require(:user).permit(
-  #     :first_name,
-  #     :last_name,
-  #     :username,
-  #     :email,
-  #     :phone,
-  #     :country,
-  #     :state,
-  #     :city,
-  #     :zip
-  #   )
-  # end
+
+  protected
+
+  def configure_permitted_parameters
+    added_attrs = [
+      :first_name,
+      :last_name,
+      :username,
+      :email,
+      :phone,
+      :country,
+      :city,
+      :state,
+      :zip,
+      :password,
+      :password_confirmation,
+      :newsletter,
+      :remember_me
+    ]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  end
 end

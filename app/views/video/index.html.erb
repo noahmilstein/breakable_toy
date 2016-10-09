@@ -1,0 +1,11 @@
+<h1>Video Index</h1>
+<% unless @videos.nil? %>
+  <% @videos.each do |video| %>
+    <%= video.title %>
+    <%= video.url %>
+    <%= video.description %>
+    <% video.tags.each do |tag| %>
+      <%= tag %>
+    <% end %>
+  <% end %>
+<% end %>

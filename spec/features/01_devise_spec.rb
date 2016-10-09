@@ -13,7 +13,9 @@ feature "Prospective user" do
     end
 
     scenario "user signs up" do
+      visit unauthenticated_root_path
       fill_out_sign_up_form(user1)
+      visit user_path(user1)
 
       expect(page).to have_content(user1.first_name)
       expect(page).to have_content(user1.last_name)
@@ -28,11 +30,11 @@ feature "Prospective user" do
   end
 
   context "is authenticated" do
-    scenario "visits root and sees movie index" do
+    scenario "visits root and sees video index" do
       visit authenticated_root_path
       user_sign_in(user2)
 
-      expect(page).to have_content("Welcome")
+      expect(page).to have_content("Signed in successfully")
       expect(page).to have_content("Video Index")
     end
 
@@ -42,7 +44,7 @@ feature "Prospective user" do
       click_link "Sign Out"
       click_link "Sign In"
 
-      expect(page).to have_content("Welcome")
+      expect(page).to have_content("Signed in successfully")
       expect(page).to have_content("Video Index")
     end
   end

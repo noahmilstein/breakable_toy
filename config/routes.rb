@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :video, :users, only: [:show]
-
+  
   devise_scope :user do
     authenticated :user do
       root "video#index", as: :authenticated_root
