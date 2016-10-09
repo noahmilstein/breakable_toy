@@ -97,3 +97,28 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def fill_out_sign_up_form(user)
+  visit new_user_registration_path
+  fill_in "First Name", with: user.first_name
+  fill_in "Last Name", with: user.last_name
+  fill_in "Username", with: user.username
+  fill_in "Email", with: user.email
+  fill_in "Phone", with: user.phone
+  fill_in "Password", with: user.password
+  fill_in "Confirm Password", with: user.password
+  fill_in "Country", with: user.password
+  select "NY", from: "State"
+  fill_in "City", with: user.city
+  fill_in "Zip", with: user.zip
+  select "Yes", from: "Are you seeking a coach?"
+  select "Yes", from: "Can our coaches email you?"
+  click_button "Submit"
+end
+
+def user_sign_in(user)
+  visit new_user_session_path
+  fill_in "Email", with: user.email
+  fill_in "Password", with: user.password
+  click_button "Submit"
+end
