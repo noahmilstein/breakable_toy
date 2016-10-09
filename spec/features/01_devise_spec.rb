@@ -13,8 +13,6 @@ feature "Prospective user" do
     end
 
     scenario "user signs up" do
-      visit unauthenticated_root_path
-      click_link "Sign Up"
       fill_out_sign_up_form(user1)
 
       expect(page).to have_content(user1.first_name)

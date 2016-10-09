@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence(:phone) { |n| "#{n}#{n}#{n}-#{n}#{n}#{n}-#{n}#{n}#{n}#{n}" }
     sequence(:password) { |n| "#{n}password" }
     sequence(:country) { |n| "#{n}country" }
-    sequence(:state) { |n| "#{n}state" }
+    state "NY"
     sequence(:city) { |n| "#{n}city" }
     sequence(:zip) { |n| "#{n}#{n}#{n}#{n}#{n}" }
     seeking_coach true
