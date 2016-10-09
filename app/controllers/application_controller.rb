@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
       :zip,
       :seeking_coach,
       :accept_email,
-      :accept_phone
+      :accept_phone,
+      :remember_me
       ])
   end
 end
