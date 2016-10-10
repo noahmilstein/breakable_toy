@@ -14,7 +14,7 @@ feature 'sign up', %Q{
 # If I fill required fields, I register my account as authenticated user
 
   scenario "specify valid and required information" do
-    visit new_user_session_path
+    visit root_path
     click_link 'Sign Up'
     fill_sign_up_form(user)
     click_button 'Sign Up'
