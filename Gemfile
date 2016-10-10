@@ -15,9 +15,11 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'rb-readline'
 end
 
 group :test do
+  gem 'database_cleaner'
   gem 'launchy', require: false
 end
 

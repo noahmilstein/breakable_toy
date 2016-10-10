@@ -97,3 +97,20 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def fill_sign_up_form(user)
+  fill_in "First Name", with: user.first_name
+  fill_in "Last Name", with: user.last_name
+  fill_in "Username", with: user.username
+  fill_in "Email", with: user.email
+  fill_in "Phone", with: user.phone
+  fill_in "Password", with: user.password
+  fill_in "Confirm Password", with: user.password
+  select user.country, from: "Country"
+  select user.state, from: "State"
+  fill_in "City", with: user.city
+  fill_in "Zip", with: user.zip
+  check "Are you seeking a coach?"
+  check "Can our coaches email you?"
+  check "Can our coaches call or text you?"
+end
