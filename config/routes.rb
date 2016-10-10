@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_scope :users do
     authenticated :user do
-      root "user#show"
+      root "users#show"
     end
     unauthenticated :user do
       root "devise/sessions#new"
