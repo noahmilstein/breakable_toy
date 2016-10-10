@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        Logged in as <strong> <%= current_user.username %></strong>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> |
+        <%= link_to 'My Profile', user_path(current_user) %>
+      <% else %>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'Sign Up', new_user_registration_path %> |
+        <%= link_to 'Sign In', new_user_session_path %>
+      <% end %>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
