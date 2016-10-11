@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: [] do
+    collection do
+      get '/show_profile', to: 'users#show_profile', as: 'my_profile'
+      get '/show_log', to: 'users#show_log', as: 'my_log'
+    end
+    resources :posts, only: [:new, :create]
+  end
   root 'home#index'
-
 end

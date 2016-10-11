@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
   before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
 
-  def show
+  def show_profile
     @user = User.find(current_user)
-    # @user = User.find(params[:id])
-    # @current_user = current_user
+  end
+
+  def show_log
+    @user = User.find(current_user)
+    @posts = @user.posts
   end
 
   def authorize_user

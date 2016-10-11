@@ -119,3 +119,10 @@ def user_sign_in(user)
   fill_in "Email", with: user.email
   fill_in "Password", with: user.password
 end
+
+def create_post(post)
+  fill_in "Title", with: post.title
+  fill_in "Body", with: post.body
+  fill_in "Tags", with: post.tags
+  click_button "Submit"
+end
