@@ -25,6 +25,12 @@ class PostsController < ApplicationController
     @video = Video.new
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to my_log_users_path
+  end
+
   private
 
   def post_params

@@ -10,14 +10,21 @@ class UsersController < ApplicationController
     @posts = @user.posts
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User Deleted!"
+    redirect_to root_path
+  end
+
+  protected
+
   def authorize_user
     unless user_signed_in?
       flash[:notice] = "Please sign in first"
       redirect_to new_user_session_path
     end
   end
-
-  protected
 
   def configure_permitted_parameters
     added_attrs = [

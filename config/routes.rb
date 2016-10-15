@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :show]
   end
 
+  # resources :videos
+
   resources :posts do
     resources :videos
   end
