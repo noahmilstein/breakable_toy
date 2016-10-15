@@ -1,0 +1,14 @@
+<%= @post.title %>
+<%= @post.date %>
+<%= @post.body %>
+<%= @post.tags %>
+
+<% @videos.each do |video| %>
+  <div class="">
+    <%= video.title %>
+    <%= video.url %>
+    <%= video.embed_id %>
+  </div>
+<% end %>
+
+<%= render "./videos/new" %>

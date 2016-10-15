@@ -11,10 +11,7 @@ feature 'user has a log' do
   let(:post5) { FactoryGirl.build(:post) }
 
   scenario 'user signs in, sees nav bar' do
-    visit root_path
-    click_link 'Sign In'
     user_sign_in(user1)
-    click_button 'Submit'
 
     expect(page).to have_content("Home")
     expect(page).to have_content("Sign Out")
@@ -23,10 +20,7 @@ feature 'user has a log' do
   end
 
   scenario "user goes to show page" do
-    visit root_path
-    click_link 'Sign In'
     user_sign_in(user1)
-    click_button 'Submit'
     click_link "My Profile"
 
     expect(page).to have_content(user1.first_name)
@@ -41,29 +35,25 @@ feature 'user has a log' do
   end
 
   scenario "user sees their posts" do
-    visit root_path
-    click_link 'Sign In'
     user_sign_in(user1)
-    click_button 'Submit'
     click_link "My Log"
 
     expect(page).to have_content(post1.title)
+    expect(page).to have_link(post1.title)
     expect(page).to have_content(post2.date)
-    expect(page).to have_content(post3.body)
+    expect(page).to_not have_content(post3.body)
     expect(page).to have_content(post1.tags)
-    expect(page).to_not have_content(post4.body)
+    expect(page).to_not have_content(post4.title)
   end
 
   scenario "user creates new post in log" do
-    visit root_path
-    click_link 'Sign In'
     user_sign_in(user1)
-    click_button 'Submit'
     click_link "My Log"
     click_link "Add new entry"
     create_post(post5)
 
     expect(page).to have_content(post5.title)
+    # binding.pry
     expect(page).to have_content(post5.date)
     expect(page).to have_content(post5.body)
     expect(page).to have_content(post5.tags)

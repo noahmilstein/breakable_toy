@@ -8,42 +8,38 @@ feature 'sign up', %Q{
 } do
 
   let(:user) { User.new(first_name: "firstname", last_name: "lastname", username: "username", email: "email@email.com", phone: "(111) 111-1111", password: "password", country: "United States", city: "Boston", state: "MA", zip: "02111") }
+  let!(:user2) { FactoryGirl.create(:user) }
 
   scenario "specify valid and required information" do
-    visit root_path
-    click_link 'Sign Up'
     fill_sign_up_form(user)
-    click_button 'Sign Up'
 
     expect(page).to have_content("Welcome! You have signed up successfully.")
     expect(page).to have_content("Sign Out")
   end
 
   scenario "required information is not supplied" do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in "First Name", with: "steve"
-    fill_in "Last Name", with: "steve"
-    fill_in "Username", with: "steve"
+    visit new_user_registration_path
+    fill_in "First Name", with: user.first_name
+    fill_in "Last Name", with: user.last_name
+    fill_in "Username", with: user.username
     click_button 'Sign Up'
 
     expect(page).to have_content("can't be blank")
   end
 
   scenario "password and confirmation don't match" do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in "First Name", with: "steve"
-    fill_in "Last Name", with: "steve"
-    fill_in "Username", with: "steve"
-    fill_in "Email", with: "steve@steve.com"
-    fill_in "Phone", with: "555-555-5555"
-    fill_in "Password", with: "password"
+    visit new_user_registration_path
+    fill_in "First Name", with: user2.first_name
+    fill_in "Last Name", with: user2.last_name
+    fill_in "Username", with: user2.username
+    fill_in "Email", with: user2.email
+    fill_in "Phone", with: user2.phone
+    fill_in "Password", with: user2.password
     fill_in "Confirm Password", with: "mustache"
-    select "United States", from: "Country"
-    select "NY", from: "State"
-    fill_in "City", with: "Boston"
-    fill_in "Zip", with: "12345"
+    select user2.country, from: "Country"
+    select user2.state, from: "State"
+    fill_in "City", with: user2.city
+    fill_in "Zip", with: user2.zip
     check "Are you seeking a coach?"
     check "Can our coaches email you?"
     check "Can our coaches call or text you?"

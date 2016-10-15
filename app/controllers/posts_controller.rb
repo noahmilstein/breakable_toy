@@ -11,11 +11,18 @@ class PostsController < ApplicationController
     @post.user = @user
     if @post.save
       flash[:notice] = "Log entry submitted"
-      redirect_to my_log_users_path
+      redirect_to user_post_path(@user, @post)
     else
       flash[:notice] = @post.errors.full_messages.join(", ")
       render :new
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @videos = @post.videos
+    @video = Video.new
   end
 
   private
