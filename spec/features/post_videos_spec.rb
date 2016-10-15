@@ -37,11 +37,11 @@ feature 'user has a log' do
   end
 
   scenario 'user inspects post, sees index of post videos' do
-    # user_sign_in(user1)
-    # click_link "My Profile"
-    # click_link post1.title
-    #
-    # expect(page).to have_content(post1)
+    user_sign_in(user1)
+    click_link "My Log"
+    click_link post1.title
+
+    expect(page).to have_content(video1.title)
   end
 end
 
