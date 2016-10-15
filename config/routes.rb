@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       get '/show_profile', to: 'users#show_profile', as: 'my_profile'
       get '/show_log', to: 'users#show_log', as: 'my_log'
     end
-    resources :posts, only: [:new, :create]
+    resources :posts, only: [:new, :create, :show]
+  end
+
+  resources :posts do
+    resources :videos
   end
   root 'home#index'
 end

@@ -1,0 +1,10 @@
+<h3>Add video</h3>
+<%= form_for [@post, @video] do |f| %>
+  <%= f.label(:title, "Video Title") %>
+  <%= f.text_field(:title) %>
+  <%= f.label(:url, "Video Url") %>
+  <%= f.text_field(:url) %>
+  <%= f.label(:tags, "Video Tags") %>
+  <%= f.text_field(:tags) %>
+  <%= f.submit("Submit") %>
+<% end %>
