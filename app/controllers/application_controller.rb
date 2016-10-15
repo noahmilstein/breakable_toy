@@ -22,6 +22,22 @@ class ApplicationController < ActionController::Base
       :accept_email,
       :accept_phone,
       :remember_me
+    ])
+    devise_parameter_sanitizer.permit(
+      :account_update,
+      keys: [
+        :email,
+        :password,
+        :password_confirmation,
+        :current_password,
+        :first_name,
+        :username,
+        :last_name,
+        :phone,
+        :country,
+        :state,
+        :city,
+        :zip
       ])
   end
 end

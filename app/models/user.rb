@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :posts
-  has_many :videos, through: :posts
+  has_many :posts, dependent: :destroy
+  has_many :videos, through: :posts, dependent: :destroy
 
   validates :username, uniqueness: true, presence: true
   validates :first_name, presence: true

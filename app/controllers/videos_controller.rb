@@ -17,6 +17,15 @@ class VideosController < ApplicationController
     end
   end
 
+  def destroy
+    binding.pry
+    @video = Video.find(params[:id])
+    @post = @video.post
+    @user = @video.user
+    @video.destroy
+    redirect_to user_post_path(@user, @post)
+  end
+
   private
 
   def video_params
