@@ -6,9 +6,10 @@
 <% @videos.each do |video| %>
   <div class="">
     <%= video.title %>
-    <%= video.url %>
-    <%= video.embed_id %>
+    <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
   </div>
 <% end %>
 
 <%= render "./videos/new" %>
+
+<%= link_to('Back', my_log_users_path) %>
