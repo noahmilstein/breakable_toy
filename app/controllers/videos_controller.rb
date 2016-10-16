@@ -1,5 +1,11 @@
 class VideosController < ApplicationController
 
+  def show
+    @video = Video.find(params[:id])
+    @user = @video.user
+    @post = @video.post
+  end
+
   def create
     @user = current_user
     @post = Post.find(params[:post_id])
@@ -18,7 +24,6 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    binding.pry
     @video = Video.find(params[:id])
     @post = @video.post
     @user = @video.user

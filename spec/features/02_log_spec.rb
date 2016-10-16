@@ -53,7 +53,6 @@ feature 'user has a log' do
     create_post(post5)
 
     expect(page).to have_content(post5.title)
-    # binding.pry
     expect(page).to have_content(post5.date)
     expect(page).to have_content(post5.body)
     expect(page).to have_content(post5.tags)
