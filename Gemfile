@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'listen'
 gem 'devise'
 gem 'country_select'
+gem 'font-awesome-rails'
+gem 'foundation-rails'
 group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
