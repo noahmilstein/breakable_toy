@@ -4,6 +4,8 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @user = @video.user
     @post = @video.post
+    @comment = Comment.new
+    @comments = @video.comments
   end
 
   def create
