@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @video = Video.find(params[:video_id])
     @comment = Comment.new(comment_params)
     @post = @video.post
+
     if @comment.save
       flash[:notice] = "Comment successfully created"
       redirect_to post_video_path(@post, @video)
@@ -19,7 +20,9 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(
-      :body
+      :body,
+      :user,
+      :video
     )
   end
 end
