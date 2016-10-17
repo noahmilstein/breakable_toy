@@ -17,7 +17,7 @@ feature 'user has a log' do
   let!(:video3) { FactoryGirl.create(:video, user: user2, post: post2) }
 
 
-  scenario 'user submits new post' do
+  scenario "user submits new post" do
     user_sign_in(user1)
     click_link "My Log"
     click_link "Add new entry"
@@ -29,7 +29,7 @@ feature 'user has a log' do
     expect(page).to have_content(post1.tags)
   end
 
-  scenario 'user adds videos to post' do
+  scenario "user adds videos to post" do
     user_sign_in(user1)
     visit user_post_path(user1, post1)
     create_video(video1)
@@ -38,7 +38,7 @@ feature 'user has a log' do
     expect(page).to have_link(video1.title)
   end
 
-  scenario 'user inspects post, sees index of post videos' do
+  scenario "user inspects post, sees index of post videos" do
     user_sign_in(user1)
     click_link "My Log"
     click_link post1.title
