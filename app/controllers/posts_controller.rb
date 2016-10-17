@@ -67,5 +67,4 @@ class PostsController < ApplicationController
     :user
     )
   end
-
 end

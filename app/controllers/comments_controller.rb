@@ -12,13 +12,13 @@ class CommentsController < ApplicationController
         flash[:notice] = "Comment successfully created"
         redirect_to post_video_path(@post, @video)
       else
-        @errors = @comment.errors.full_messages.join(', ')
+        @errors = @comment.errors.full_messages.join(", ")
         flash[:notice] = @errors
-        render :'videos/show'
+        render :"videos/show"
       end
     else
       flash[:notice] = "Only OP or admin may comment"
-      render :'videos/show'
+      render :"videos/show"
     end
   end
 

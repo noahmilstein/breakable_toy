@@ -8,14 +8,11 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:new, :create, :show]
   end
-
   resources :posts do
     resources :videos
   end
-  
   resources :videos do
     resources :comments
   end
-
   root 'home#index'
 end
