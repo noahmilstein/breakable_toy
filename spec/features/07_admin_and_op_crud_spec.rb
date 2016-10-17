@@ -45,4 +45,74 @@ feature 'user' do
 
     expect(page).to_not have_button("Submit Video")
   end
+
+  scenario "OP can delete post" do
+    user_sign_in(op_user)
+    visit post_video_path(post1, video1)
+    click_link "Delete"
+
+    expect(page).to_not have_content(video1.title)
+  end
+
+  scenario "OP can edit post" do
+    user_sign_in(op_user)
+    visit post_video_path(post1, video1)
+    click_link "Edit"
+    fill_in "Tags", with: "Frank Zappa"
+    click_button "Submit Video"
+
+    expect(page).to have_content("Video successfully updated!")
+  end
+
+  scenario "non-OP/non-admin cannot edit post" do
+    user_sign_in(npc_user)
+    visit post_video_path(post1, video1)
+
+    expect(page).to_not have_content("Edit")
+    expect(page).to_not have_content("Delete")
+  end
+
+  scenario "admin cannot edit or delete OP post" do
+    user_sign_in(admin_user)
+    visit post_video_path(post1, video1)
+
+    expect(page).to_not have_content("Edit")
+    expect(page).to_not have_content("Delete")
+  end
+
+  xscenario "non-OP/non-admin cannot edit video" do
+  end
+
+  xscenario "non-OP/non-admin cannot delete video" do
+  end
+
+  xscenario "OP can edit video" do
+  end
+
+  xscenario "OP can delete video" do
+  end
+
+  xscenario "admin cannot edit OP video" do
+  end
+
+  xscenario "admin cannot delete OP video" do
+  end
+
+  xscenario "non-OP/non-admin cannot edit comment" do
+  end
+
+  xscenario "non-OP/non-admin cannot delete comment" do
+  end
+
+  xscenario "OP can edit comment" do
+  end
+
+  xscenario "OP can delete comment" do
+  end
+
+  xscenario "admin cannot edit OP comment" do
+  end
+
+  xscenario "admin cannot delete OP comment" do
+  end
 end
