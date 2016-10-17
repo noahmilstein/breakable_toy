@@ -93,7 +93,7 @@ feature "user" do
   scenario "OP can edit post" do
     user_sign_in(op_user)
     visit user_post_path(op_user, post1)
-    find('.post-show', text: "Edit").click
+    find(".post-show", text: "Edit").click
     fill_in "Title", with: "Mustache"
     click_button "Submit"
 
