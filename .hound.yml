@@ -1,7 +1,18 @@
+ruby:
+  config_file: config/rubocop.yml
+
+jshint:
+  config_file: .jshintrc
+
+Documentation:
+  Enabled: false
+
 AllCops:
   Exclude:
     - db/schema.rb
-  #DisplayCopNames: true
+
+Metrics/AbcSize:
+  Enabled: false
 
 AccessorMethodName:
   Enabled: false
@@ -19,6 +30,9 @@ AsciiComments:
   Enabled: false
 
 AsciiIdentifiers:
+  Enabled: false
+
+Style/MutableConstant:
   Enabled: false
 
 Attr:
@@ -64,9 +78,6 @@ Delegate:
 DeprecatedHashMethods:
   Enabled: false
 
-Documentation:
-  Enabled: false
-
 DotPosition:
   EnforcedStyle: trailing
 
@@ -97,8 +108,8 @@ FormatString:
 GlobalVars:
   Enabled: false
 
-GuardClause:
-  Enabled: false
+Style/GuardClause:
+  Enabled: true
 
 IfUnlessModifier:
   Enabled: false
@@ -118,8 +129,11 @@ LambdaCall:
 LineEndConcatenation:
   Enabled: false
 
-LineLength:
-  Max: 80
+Metrics/LineLength:
+  Enabled: false
+  Max: 205
+  Exclude:
+    - 'db/schema.rb'
 
 MethodLength:
   Enabled: false
@@ -142,7 +156,7 @@ NilComparison:
 Not:
   Enabled: false
 
-NumericLiterals:
+Style/NumericLiterals:
   Enabled: false
 
 OneLineConditional:
@@ -189,6 +203,9 @@ SpecialGlobalVars:
   Enabled: false
 
 StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 VariableInterpolation:
@@ -270,6 +287,13 @@ Style/MultilineOperationIndentation:
 
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  Enabled: true
 
 Style/UnneededPercentQ:
   Enabled: false
