@@ -46,7 +46,7 @@ feature 'user' do
     expect(page).to_not have_button("Submit Video")
   end
 
-  scenario "OP can delete post" do
+  scenario "OP can delete video" do
     user_sign_in(op_user)
     visit post_video_path(post1, video1)
     click_link "Delete"
@@ -54,7 +54,7 @@ feature 'user' do
     expect(page).to_not have_content(video1.title)
   end
 
-  scenario "OP can edit post" do
+  scenario "OP can edit video" do
     user_sign_in(op_user)
     visit post_video_path(post1, video1)
     click_link "Edit"
@@ -64,7 +64,7 @@ feature 'user' do
     expect(page).to have_content("Video successfully updated!")
   end
 
-  scenario "non-OP/non-admin cannot edit post" do
+  scenario "non-OP/non-admin cannot edit video" do
     user_sign_in(npc_user)
     visit post_video_path(post1, video1)
 
@@ -72,7 +72,7 @@ feature 'user' do
     expect(page).to_not have_content("Delete")
   end
 
-  scenario "admin cannot edit or delete OP post" do
+  scenario "admin cannot edit or delete OP video" do
     user_sign_in(admin_user)
     visit post_video_path(post1, video1)
 
@@ -80,22 +80,31 @@ feature 'user' do
     expect(page).to_not have_content("Delete")
   end
 
-  xscenario "non-OP/non-admin cannot edit video" do
+  scenario "non-OP/non-admin cannot edit or delete post" do
+    user_sign_in(npc_user)
+    visit user_post_path(op_user, post1)
+
+    expect(page).to_not have_link("Edit")
+    expect(page).to_not have_link("Delete")
   end
 
-  xscenario "non-OP/non-admin cannot delete video" do
+  scenario "OP can edit post" do
+    user_sign_in(op_user)
+    visit user_post_path(op_user, post1)
+    find('.post-show', text: "Edit").click
+    fill_in "Title", with: "Mustache"
+    click_button "Submit"
+
+    expect(page).to have_content("Mustache")
   end
 
-  xscenario "OP can edit video" do
+  xscenario "OP can delete post" do
   end
 
-  xscenario "OP can delete video" do
+  xscenario "admin cannot edit OP post" do
   end
 
-  xscenario "admin cannot edit OP video" do
-  end
-
-  xscenario "admin cannot delete OP video" do
+  xscenario "admin cannot delete OP post" do
   end
 
   xscenario "non-OP/non-admin cannot edit comment" do
@@ -115,4 +124,6 @@ feature 'user' do
 
   xscenario "admin cannot delete OP comment" do
   end
+
+  # add confirm are you sure
 end
