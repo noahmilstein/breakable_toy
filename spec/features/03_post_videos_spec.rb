@@ -9,11 +9,13 @@ feature 'user has a log' do
   let!(:user1) { FactoryGirl.create(:user) }
   let!(:post1) { FactoryGirl.create(:post, user: user1) }
   let!(:video1) { FactoryGirl.create(:video, user: user1, post: post1) }
-  let!(:post2) { FactoryGirl.create(:post, user: user1) }
-  let!(:post3) { FactoryGirl.create(:post, user: user1) }
+
   let!(:user2) { FactoryGirl.create(:user) }
-  let!(:post4) { FactoryGirl.create(:post, user: user2) }
-  let(:post5) { FactoryGirl.build(:post) }
+  let!(:post2) { FactoryGirl.create(:post, user: user2) }
+  let!(:post3) { FactoryGirl.create(:post, user: user2) }
+  let!(:video2) { FactoryGirl.create(:video, user: user2, post: post2) }
+  let!(:video3) { FactoryGirl.create(:video, user: user2, post: post2) }
+
 
   scenario 'user submits new video in post' do
     user_sign_in(user1)
@@ -32,8 +34,9 @@ feature 'user has a log' do
     visit user_post_path(user1, post1)
     fill_in "Video Url", with: "https://www.youtube.com/watch?v=h2q6v0AChyw"
     click_button "Submit"
+
     expect(page).to have_content(video1.title)
-    # page.should have_css("iframe[class='html5 video']")
+    expect(page).to have_link(video1.title)
   end
 
   scenario 'user inspects post, sees index of post videos' do
@@ -43,11 +46,13 @@ feature 'user has a log' do
 
     expect(page).to have_content(video1.title)
   end
-end
 
-# movie GET    /movies/:id(.:format)                        movies#show
-#  user GET    /users/:id(.:format)                         users#show
-#       GET    /movies/:movie_id/reviews/:id(.:format)      reviews#show
-#       GET    /movies/:id(.:format)                        movies#show
-# review_vote GET    /reviews/:review_id/votes/:id(.:format)      votes#show
-# review GET    /reviews/:id(.:format)                       reviews#show
+  scenario "user navigates to video show page, see video" do
+    user_sign_in(user2)
+    visit user_post_path(user2, post2)
+    click_link video2.title
+
+    expect(page).to have_content(video2.title)
+    expect(page).to have_css("iframe")
+  end
+end
