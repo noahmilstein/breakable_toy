@@ -1,10 +1,15 @@
-<h1>New Log Entry</h1>
+<div class="">
+  <h3> <%= @user.username %>'s Log</h3>
+  <h3><%= link_to 'Add new entry', new_user_post_path(@user) %></h3>
+</div>
 
-<h3><%= link_to 'Add new entry', new_user_post_path(@user) %></h3>
-
-<% @posts.each do |post| %>
-  <%= link_to post.title, user_post_path(@user, post) %>
-  <%= post.date %>
-  <%= post.tags %>
-  <%= link_to "Delete Post", post, method: :delete %>
-<% end %>
+<div class="">
+  <% @posts.each do |post| %>
+    <div class="">
+      <%= link_to post.title, user_post_path(@user, post) %>
+      <%= post.date %>
+      <%= post.tags %>
+      <%= link_to "Delete Post", post, method: :delete %>
+    </div>
+  <% end %>
+</div>

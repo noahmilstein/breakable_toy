@@ -14,15 +14,20 @@
   <body>
     <nav>
       <% if user_signed_in? %>
-        Logged in as <strong> <%= current_user.username %></strong>
-        <%= link_to 'Home', root_path %> |
-        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> |
-        <%= link_to 'My Profile', my_profile_users_path %> |
-        <%= link_to 'My Log', my_log_users_path %>
+        <div class="">
+          <%= link_to 'Home', root_path %> |
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> |
+          <%= link_to 'My Profile', my_profile_users_path %> |
+          <%= link_to 'My Log', my_log_users_path %> |
+          <%= link_to 'Video Index', videos_path %> |
+          Logged in as <strong> <%= current_user.username %></strong>
+        </div>
       <% else %>
-        <%= link_to 'Home', root_path %> |
-        <%= link_to 'Sign Up', new_user_registration_path %> |
-        <%= link_to 'Sign In', new_user_session_path %>
+        <div class="">
+          <%= link_to 'Home', root_path %> |
+          <%= link_to 'Sign Up', new_user_registration_path %> |
+          <%= link_to 'Sign In', new_user_session_path %>
+        </div>
       <% end %>
     </nav>
 
