@@ -27,8 +27,33 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to my_log_users_path
+    if current_user == @post.user
+      @post.destroy
+      redirect_to my_log_users_path
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    if current_user == @post.user
+      if @post.save
+        flash[:notice] = "Post successfully updated!"
+        redirect_to user_post_path(@post.user, @post)
+      else
+        flash[:notice] = "Post was not updated."
+        @errors = @post.errors.full_messages.join(", ")
+        flash[:alert] = @errors
+        render action: "edit"
+      end
+    else
+      flash[:notice] = "Only OP can edit post"
+      refresh :edit
+    end
   end
 
   private

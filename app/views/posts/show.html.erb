@@ -1,19 +1,25 @@
-<div class="">
+<div class="post-show">
   <%= @post.title %>
   <%= @post.date %>
   <%= @post.body %>
   <%= @post.tags %>
-  <%= link_to "Delete Post", @post, method: :delete %>
+  <% if current_user == @post.user %>
+    <%= link_to "Edit Post", edit_post_path(@post) %> |
+    <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
 </div>
 
 <div class="">
 <% @videos.each do |video| %>
   <div class="">
     <%= link_to video.title, post_video_path(@post, video) %>
-    <%= link_to "Delete Video", post_video_path(video), method: :delete %>
+    <% if current_user == video.user %>
+      <%= link_to "Edit Video", edit_video_path(video) %> |
+      <%= link_to "Delete Video", post_video_path(@post, video), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
   </div>
 <% end %>
 </div>
 
 <%= render "./videos/new" %>
-<%= link_to('Back', my_log_users_path) %>
+<%= link_to("Back", my_log_users_path) %>
