@@ -34,12 +34,36 @@ class VideosController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
     @video = Video.find(params[:id])
     @post = @video.post
-    @user = @video.user
-    @video.destroy
-    redirect_to user_post_path(@user, @post)
+  end
+
+  def update
+    @video = Video.find(params[:id])
+    @post = Post.find(params[:id])
+    @video.update_attributes(video_params)
+    if current_user == @video.user
+      if @video.save
+        flash[:notice] = "Video successfully updated!"
+        redirect_to post_video_path(@post, @video)
+      else
+        fail_update(@video)
+      end
+    else
+      flash[:notice] = "Only OP can edit video"
+      refresh :edit
+    end
+  end
+
+  def destroy
+    @video = Video.find(params[:id])
+    if current_user == @video.user
+      @post = @video.post
+      @user = @video.user
+      @video.destroy
+      redirect_to user_post_path(@user, @post)
+    end
   end
 
   private

@@ -12,9 +12,14 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    flash[:notice] = "User Deleted!"
-    redirect_to root_path
+    if current_user == @user
+      @user.destroy
+      flash[:notice] = "User Deleted!"
+      redirect_to root_path
+    else
+      flash[:notice] = "Only owner may delete their profile"
+      refresh :show_profile
+    end
   end
 
   protected
