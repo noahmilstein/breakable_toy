@@ -1,0 +1,28 @@
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  Enabled: true
+
+Style/MutableConstant:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+  Max: 205
+  Exclude:
+    - 'db/schema.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: true
+
+AllCops:
+  Excludes:
+    - db/schema.rb
