@@ -48,7 +48,10 @@ class VideosController < ApplicationController
         flash[:notice] = "Video successfully updated!"
         redirect_to post_video_path(@post, @video)
       else
-        fail_update(@video)
+        flash[:notice] = "Video was not updated."
+        @errors = @video.errors.full_messages.join(", ")
+        flash[:alert] = @errors
+        render action: "edit"
       end
     else
       flash[:notice] = "Only OP can edit video"

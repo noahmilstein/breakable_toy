@@ -36,23 +36,25 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
   end
-  #
-  # def update
-  #   @video = Video.find(params[:id])
-  #   @post = Post.find(params[:id])
-  #   @video.update_attributes(video_params)
-  #   if current_user == @video.user
-  #     if @video.save
-  #       flash[:notice] = "Video successfully updated!"
-  #       redirect_to post_video_path(@post, @video)
-  #     else
-  #       fail_update(@video)
-  #     end
-  #   else
-  #     flash[:notice] = "Only OP can edit video"
-  #     refresh :edit
-  #   end
-  # end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update_attributes(post_params)
+    if current_user == @post.user
+      if @post.save
+        flash[:notice] = "Post successfully updated!"
+        redirect_to user_post_path(@post.user, @post)
+      else
+        flash[:notice] = "Post was not updated."
+        @errors = @post.errors.full_messages.join(", ")
+        flash[:alert] = @errors
+        render action: "edit"
+      end
+    else
+      flash[:notice] = "Only OP can edit post"
+      refresh :edit
+    end
+  end
 
   private
 
