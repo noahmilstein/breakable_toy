@@ -19,12 +19,17 @@ class VideosController < ApplicationController
     @video.user_id = @user.id
     @video.post_id = @post.id
     @video.embed_id = @video.url.split('=').last
-    if @video.save
-      flash[:notice] = "Video successfully created"
-      redirect_to user_post_path(@user, @post)
+    if current_user == @post.user
+      if @video.save
+        flash[:notice] = "Video successfully created"
+        redirect_to user_post_path(@user, @post)
+      else
+        @errors = @video.errors.full_messages.join(', ')
+        flash[:notice] = @errors
+        render :'posts/show'
+      end
     else
-      @errors = @video.errors.full_messages.join(', ')
-      flash[:notice] = @errors
+      flash[:notice] = "Only OP can upload videos"
       render :'posts/show'
     end
   end

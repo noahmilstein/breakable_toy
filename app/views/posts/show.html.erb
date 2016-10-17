@@ -10,7 +10,7 @@
 <% @videos.each do |video| %>
   <div class="">
     <%= link_to video.title, post_video_path(@post, video) %>
-    <%= link_to "Delete Video", post_video_path(video), method: :delete %>
+    <%= link_to "Delete Video", post_video_path(@post, video), method: :delete %>
   </div>
 <% end %>
 </div>

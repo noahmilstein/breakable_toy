@@ -8,17 +8,19 @@
 <h3>Comments</h3>
 
 <div class="">
-  <%= form_for [@video, @comment] do |f| %>
-    <%= f.label(:body, "Comment") %>
-    <%= f.text_area(:body) %>
-    <%= f.submit("Submit Comment") %>
+  <% if current_user == @video.post.user || current_user.admin %>
+    <%= form_for [@video, @comment] do |f| %>
+      <%= f.label(:body, "Comment") %>
+      <%= f.text_area(:body) %>
+      <%= f.submit("Submit Comment") %>
+    <% end %>
   <% end %>
 </div>
 
-<div class="">
+<div class="comments">
 <% unless @comments.nil? %>
   <% @comments.each do |comment| %>
-    <div class="">
+    <div class="comment">
     <%= comment.body %>
     <%= comment.user.username %>
     </div>

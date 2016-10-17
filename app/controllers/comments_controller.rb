@@ -8,12 +8,17 @@ class CommentsController < ApplicationController
     @comment.video = @video # this should instead be strong params
     # @comment = Comment.new(comment_params) # why isn't this working?
     @post = @video.post
-    if @comment.save
-      flash[:notice] = "Comment successfully created"
-      redirect_to post_video_path(@post, @video)
+    if current_user == @video.user || current_user.admin
+      if @comment.save
+        flash[:notice] = "Comment successfully created"
+        redirect_to post_video_path(@post, @video)
+      else
+        @errors = @comment.errors.full_messages.join(', ')
+        flash[:notice] = @errors
+        render :'videos/show'
+      end
     else
-      @errors = @comment.errors.full_messages.join(', ')
-      flash[:notice] = @errors
+      flash[:notice] = "Only OP or admin may comment"
       render :'videos/show'
     end
   end
