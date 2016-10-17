@@ -3,10 +3,9 @@ class CommentsController < ApplicationController
   def create
     @user = current_user
     @video = Video.find(params[:video_id])
-    @comment = Comment.new(body: params[:comment][:body])
-    @comment.user = @user # this should instead be strong params
-    @comment.video = @video # this should instead be strong params
-    # @comment = Comment.new(comment_params) # why isn't this working?
+    @comment = Comment.new(comment_params)
+    @comment.user = @user
+    @comment.video = @video
     @post = @video.post
     if current_user == @video.user || current_user.admin
       if @comment.save
@@ -60,7 +59,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def comment_params # this method is not working
+  def comment_params
     params.require(:comment).permit(
       :body,
     )
