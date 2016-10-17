@@ -3,7 +3,7 @@
   <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
   <% if current_user == @video.user %>
     <%= link_to "Edit Video", edit_video_path(@video) %> |
-    <%= link_to "Delete Video", post_video_path(@post, @video), method: :delete %> |
+    <%= link_to "Delete Video", post_video_path(@post, @video), method: :delete, data: { confirm: "Are you sure?" } %> |
   <% end %>
   <%= link_to('Back', user_post_path(@user, @post)) %>
 </div>
@@ -20,7 +20,7 @@
       <%= comment.user.username %>
       <% if current_user == comment.user %>
         <%= link_to "Edit Comment", edit_video_comment_path(comment.video, comment) %> |
-        <%= link_to "Delete Comment", video_comment_path(@video, comment), method: :delete %>
+        <%= link_to "Delete Comment", video_comment_path(@video, comment), method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
   <% end %>
