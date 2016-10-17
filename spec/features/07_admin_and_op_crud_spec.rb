@@ -3,14 +3,16 @@ require 'rails_helper'
 feature 'user' do
 
   let!(:op_user) { FactoryGirl.create(:user) }
+  let!(:op_user2) { FactoryGirl.create(:user) }
   let!(:admin_user) { FactoryGirl.create(:user, admin: true) }
+  let!(:admin_user2) { FactoryGirl.create(:user, admin: true) }
   let!(:npc_user) { FactoryGirl.create(:user) }
-
   let!(:post1) { FactoryGirl.create(:post, user: op_user) }
+  let!(:post2) { FactoryGirl.create(:post, user: op_user2) }
   let!(:video1) { FactoryGirl.create(:video, user: op_user, post: post1) }
+  let!(:video2) { FactoryGirl.create(:video, user: op_user2, post: post2) }
   let!(:comment1) { FactoryGirl.create(:comment, user: op_user, video: video1) }
-  let!(:comment2) { FactoryGirl.create(:comment, user: npc_user, video: video1) }
-  let!(:comment3) { FactoryGirl.create(:comment, user: admin_user, video: video1) }
+  let!(:comment2) { FactoryGirl.create(:comment, user: admin_user, video: video1) }
 
   scenario "non-OP/non-admin cannot comment on video" do
     user_sign_in(npc_user)
@@ -32,10 +34,10 @@ feature 'user' do
   scenario "admin can comment on video" do
     user_sign_in(admin_user)
     visit post_video_path(post1, video1)
-    create_comment(comment3)
+    create_comment(comment2)
 
-    expect(page).to have_css('div.comment', text: comment3.body)
-    expect(page).to have_css('div.comment', text: comment3.user.username)
+    expect(page).to have_css('div.comment', text: comment2.body)
+    expect(page).to have_css('div.comment', text: comment2.user.username)
     expect(page).to_not have_content("Only OP or admin may comment")
   end
 
@@ -49,15 +51,15 @@ feature 'user' do
   scenario "OP can delete video" do
     user_sign_in(op_user)
     visit post_video_path(post1, video1)
-    click_link "Delete"
+    click_link "Delete Video"
 
-    expect(page).to_not have_content(video1.title)
+    expect(page).to_not have_css("iframe")
   end
 
   scenario "OP can edit video" do
     user_sign_in(op_user)
     visit post_video_path(post1, video1)
-    click_link "Edit"
+    click_link "Edit Video"
     fill_in "Tags", with: "Frank Zappa"
     click_button "Submit Video"
 
@@ -68,24 +70,24 @@ feature 'user' do
     user_sign_in(npc_user)
     visit post_video_path(post1, video1)
 
-    expect(page).to_not have_content("Edit")
-    expect(page).to_not have_content("Delete")
+    expect(page).to_not have_content("Edit Video")
+    expect(page).to_not have_content("Delete Video")
   end
 
   scenario "admin cannot edit or delete OP video" do
     user_sign_in(admin_user)
     visit post_video_path(post1, video1)
 
-    expect(page).to_not have_content("Edit")
-    expect(page).to_not have_content("Delete")
+    expect(page).to_not have_content("Edit Video")
+    expect(page).to_not have_content("Delete Video")
   end
 
   scenario "non-OP/non-admin cannot edit or delete post" do
     user_sign_in(npc_user)
     visit user_post_path(op_user, post1)
 
-    expect(page).to_not have_link("Edit")
-    expect(page).to_not have_link("Delete")
+    expect(page).to_not have_link("Edit Post")
+    expect(page).to_not have_link("Delete Post")
   end
 
   scenario "OP can edit post" do
@@ -98,32 +100,54 @@ feature 'user' do
     expect(page).to have_content("Mustache")
   end
 
-  xscenario "OP can delete post" do
+  scenario "OP can delete post" do
+    user_sign_in(op_user)
+    visit my_log_users_path
+    click_link "Delete"
+
+    expect(page).to_not have_content(post1.title)
+    expect(page).to_not have_content(post1.body)
   end
 
-  xscenario "admin cannot edit OP post" do
+  scenario "admin cannot edit or delete OP post" do
+    user_sign_in(admin_user)
+    visit user_post_path(op_user, post1)
+
+    expect(page).to_not have_content("Edit Post")
+    expect(page).to_not have_content("Delete Post")
   end
 
-  xscenario "admin cannot delete OP post" do
+  scenario "OP can edit comment" do
+    user_sign_in(op_user)
+    visit post_video_path(post1, video1)
+    click_link "Edit Comment"
+    fill_in "Comment", with: "I have been updated!!!"
+    click_button "Submit"
+
+    expect(page).to have_content("I have been updated!!!")
   end
 
-  xscenario "non-OP/non-admin cannot edit comment" do
+  scenario "OP can delete comment" do
+    user_sign_in(op_user)
+    visit post_video_path(post1, video1)
+    click_link "Delete Comment"
+
+    expect(page).to_not have_content(comment1.body)
   end
 
-  xscenario "non-OP/non-admin cannot delete comment" do
+  scenario "non-OP/non-admin cannot edit or delete comment" do
+    user_sign_in(npc_user)
+    visit post_video_path(post1, video1)
+
+    expect(page).to_not have_link("Edit Comment")
+    expect(page).to_not have_link("Delete Comment")
   end
 
-  xscenario "OP can edit comment" do
-  end
+  scenario "admin cannot edit or delete OP comment" do
+    user_sign_in(admin_user2)
+    visit post_video_path(post2, video2)
 
-  xscenario "OP can delete comment" do
+    expect(page).to_not have_link("Edit Comment")
+    expect(page).to_not have_link("Delete Comment")
   end
-
-  xscenario "admin cannot edit OP comment" do
-  end
-
-  xscenario "admin cannot delete OP comment" do
-  end
-
-  # add confirm are you sure
 end

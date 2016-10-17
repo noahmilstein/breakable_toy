@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :videos
   end
-
+  
   resources :videos do
     resources :comments
   end
