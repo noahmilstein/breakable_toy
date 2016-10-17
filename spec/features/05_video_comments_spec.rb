@@ -26,10 +26,4 @@ feature 'user' do
     expect(page).to have_content(comment2.body)
     expect(page).to have_content(comment3.body)
   end
-
-  xscenario "admin leaves comment on OP video" do
-    user_sign_in(user1)
-
-    expect(page).to have_content("")
-  end
 end

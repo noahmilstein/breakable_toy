@@ -131,7 +131,17 @@ end
 def create_post(post)
   fill_in "Title", with: post.title
   fill_in "Body", with: post.body
-  # fill_in "Video(s)", with: post.videos
   fill_in "Tags", with: post.tags
   click_button "Submit"
+end
+
+def create_comment(comment)
+  fill_in "Comment", with: comment.body
+  click_button "Submit Comment"
+end
+
+def create_video(video)
+  fill_in "Title", with: video.title
+  fill_in "Video Url", with: video.url
+  click_button "Submit Video"
 end
