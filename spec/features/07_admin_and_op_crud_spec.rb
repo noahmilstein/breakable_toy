@@ -1,6 +1,6 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'user' do
+feature "user" do
 
   let!(:op_user) { FactoryGirl.create(:user) }
   let!(:op_user2) { FactoryGirl.create(:user) }
@@ -26,8 +26,8 @@ feature 'user' do
     visit post_video_path(post1, video1)
     create_comment(comment1)
 
-    expect(page).to have_css('div.comment', text: comment1.body)
-    expect(page).to have_css('div.comment', text: comment1.user.username)
+    expect(page).to have_css("div.comment", text: comment1.body)
+    expect(page).to have_css("div.comment", text: comment1.user.username)
     expect(page).to_not have_content("Only OP or admin may comment")
   end
 
@@ -36,8 +36,8 @@ feature 'user' do
     visit post_video_path(post1, video1)
     create_comment(comment2)
 
-    expect(page).to have_css('div.comment', text: comment2.body)
-    expect(page).to have_css('div.comment', text: comment2.user.username)
+    expect(page).to have_css("div.comment", text: comment2.body)
+    expect(page).to have_css("div.comment", text: comment2.user.username)
     expect(page).to_not have_content("Only OP or admin may comment")
   end
 
