@@ -1,0 +1,12 @@
+<div class="">
+  <% @videos.each do |video| %>
+    <div class="">
+      <%= link_to video.title, post_video_path(video.post, video) %>
+      <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
+      <%= video.user.username %>
+      <% unless video.comments.last.nil? %>
+        <%= video.comments.last.body %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

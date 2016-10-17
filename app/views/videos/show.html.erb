@@ -1,19 +1,27 @@
-<%= @video.title %>
-<%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
-<%= link_to "Delete Video", post_video_path(@post, @video), method: :delete %>
-<%= link_to('Back', user_post_path(@user, @post)) %>
+<div class="">
+  <%= @video.title %>
+  <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
+  <%= link_to "Delete Video", post_video_path(@post, @video), method: :delete %>
+  <%= link_to('Back', user_post_path(@user, @post)) %>
+</div>
 
 <h3>Comments</h3>
 
-<%= form_for [@video, @comment] do |f| %>
-  <%= f.label(:body, "Comment") %>
-  <%= f.text_area(:body) %>
-  <%= f.submit("Submit Comment") %>
-<% end %>
+<div class="">
+  <%= form_for [@video, @comment] do |f| %>
+    <%= f.label(:body, "Comment") %>
+    <%= f.text_area(:body) %>
+    <%= f.submit("Submit Comment") %>
+  <% end %>
+</div>
 
+<div class="">
 <% unless @comments.nil? %>
   <% @comments.each do |comment| %>
+    <div class="">
     <%= comment.body %>
-    <%= comment.user %>
+    <%= comment.user.username %>
+    </div>
   <% end %>
 <% end %>
+</div>
