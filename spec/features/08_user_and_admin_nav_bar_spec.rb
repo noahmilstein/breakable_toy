@@ -1,7 +1,6 @@
 require "rails_helper"
 
 feature "user" do
-
   let!(:user1) { FactoryGirl.create(:user, seeking_coach: true, accept_email: true, accept_phone: true) }
   let!(:user2) { FactoryGirl.create(:user, seeking_coach: true, accept_email: true, accept_phone: true) }
   let!(:user3) { FactoryGirl.create(:user, seeking_coach: true, accept_email: true, accept_phone: true) }
