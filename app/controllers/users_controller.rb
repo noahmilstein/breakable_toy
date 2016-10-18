@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
 
+  def coach_index
+    @coaches = User.where(admin: true)
+  end
+
+  def trainee_index
+    @trainees = User.where(seeking_coach: true)
+  end
+
   def show_profile
     @user = User.find(current_user)
   end
