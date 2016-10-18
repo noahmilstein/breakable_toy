@@ -25,7 +25,11 @@
           <% else %>
             <%= link_to "Trainee Index", trainee_index_users_path %> |
           <% end %>
-          Logged in as <strong> <%= current_user.username %></strong>
+          <% if current_user.admin %>
+            Logged in as coach: <strong> <%= current_user.username %></strong>
+          <% else %>
+            Logged in as <strong> <%= current_user.username %></strong>
+          <% end %>
         </div>
       <% else %>
         <div class="">
