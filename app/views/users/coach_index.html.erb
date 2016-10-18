@@ -4,7 +4,7 @@
     <%= coach.country %>
     <%= coach.state %>
     <%= coach.city %>
-    <button>Send Email</button>
+    <%= button_to "Send Email", "mailto:#{coach.email}" %>
     <button>Send Text</button>
   <% end %>
 </div>

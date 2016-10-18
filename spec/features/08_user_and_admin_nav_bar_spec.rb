@@ -41,6 +41,17 @@ feature "user" do
   end
 
   xscenario "is coach, signs up, email not in const, requests admin status" do
-    # "Welcome, coach!"
+    user_sign_in(user1)
+    visit my_profile_users_path
+    click_button "Request Admin Status"
+
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
   end
+
+  scenario "user is admin nav bar reads coach" do
+  end
+
+  scenario "user is not admin nav bar does not read coach" do
+  end
+
 end

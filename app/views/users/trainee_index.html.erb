@@ -4,7 +4,7 @@
     <%= trainee.country %>
     <%= trainee.state %>
     <%= trainee.city %>
-    <button>Send Email</button>
+    <%= button_to "Send Email", "mailto:#{trainee.email}" %>
     <button>Send Text</button>
   <% end %>
 </div>
