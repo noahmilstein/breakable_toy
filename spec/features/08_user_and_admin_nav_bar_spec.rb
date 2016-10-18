@@ -40,18 +40,25 @@ feature "user" do
     expect(unlisted_admin.admin).to be(true)
   end
 
-  xscenario "is coach, signs up, email not in const, requests admin status" do
+  scenario "is coach, signs up, email not in const, requests admin status" do
     user_sign_in(user1)
     visit my_profile_users_path
     click_button "Request Admin Status"
 
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
+    expect(ActionMailer::Base.deliveries.last.subject).to have_content("#{user1.username} requested admin")
   end
 
   scenario "user is admin nav bar reads coach" do
+    user_sign_in(admin_user1)
+
+    expect(page).to have_content("Logged in as coach: #{admin_user1.username}")
+    expect(page).to_not have_content("Logged in as #{admin_user1.username}")
   end
 
   scenario "user is not admin nav bar does not read coach" do
-  end
+    user_sign_in(user1)
 
+    expect(page).to have_content("Logged in as #{user1.username}")
+    expect(page).to_not have_content("Logged in as coach: #{user1.username}")
+  end
 end
