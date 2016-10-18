@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   after_create :set_coach, :welcome_email
 
   def set_coach
