@@ -1,0 +1,10 @@
+<div class="">
+  <% @coaches.each do |coach| %>
+    <%= coach.username %>
+    <%= coach.country %>
+    <%= coach.state %>
+    <%= coach.city %>
+    <button>Send Email</button>
+    <button>Send Text</button>
+  <% end %>
+</div>

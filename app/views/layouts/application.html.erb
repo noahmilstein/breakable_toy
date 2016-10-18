@@ -20,6 +20,11 @@
           <%= link_to "My Profile", my_profile_users_path %> |
           <%= link_to "My Log", my_log_users_path %> |
           <%= link_to "Video Index", videos_path %> |
+          <% if !current_user.admin %>
+            <%= link_to "Coach Index", coach_index_users_path %> |
+          <% else %>
+            <%= link_to "Trainee Index", trainee_index_users_path %> |
+          <% end %>
           Logged in as <strong> <%= current_user.username %></strong>
         </div>
       <% else %>
