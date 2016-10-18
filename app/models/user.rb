@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  after_create :set_coach, :welcome_email
+
+  def set_coach
+    self.update(admin: true) if ENV['COACH_EMAILS'].split(",").include?(email)
+  end
+
+  def welcome_email
+    NewUserEmailMailer.notify_user(self).deliver
+  end
+
   has_many :posts, dependent: :destroy
   has_many :videos, through: :posts, dependent: :destroy
   has_many :comments
