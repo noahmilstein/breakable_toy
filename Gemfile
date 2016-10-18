@@ -11,6 +11,7 @@ gem 'country_select'
 gem 'font-awesome-rails'
 gem 'foundation-rails'
 group :development, :test do
+  gem 'dotenv'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
