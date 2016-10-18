@@ -1,4 +1,8 @@
 require 'coveralls'
+require 'dotenv'
+require 'database_cleaner'
+
+Dotenv.load('.env')
 
 Coveralls.wear!('rails')
 

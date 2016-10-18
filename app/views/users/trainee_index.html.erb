@@ -1,0 +1,10 @@
+<div class="">
+  <% @trainees.each do |trainee| %>
+    <%= trainee.username %>
+    <%= trainee.country %>
+    <%= trainee.state %>
+    <%= trainee.city %>
+    <%= button_to "Send Email", "mailto:#{trainee.email}" %>
+    <button>Send Text</button>
+  <% end %>
+</div>
