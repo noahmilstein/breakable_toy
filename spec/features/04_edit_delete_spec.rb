@@ -6,8 +6,11 @@ feature 'user' do
   let!(:post1) { FactoryGirl.create(:post, user: user1) }
   let!(:video1) { FactoryGirl.create(:video, user: user1, post: post1) }
 
-  scenario "user edits username" do
+  before :each do
     user_sign_in(user1)
+  end
+
+  scenario "user edits username" do
     visit edit_user_registration_path
     fill_in "Phone", with: "222-222-2222"
     fill_in "Enter Password", with: user1.password
@@ -20,7 +23,6 @@ feature 'user' do
   end
 
   scenario "user deletes self" do
-    user_sign_in(user1)
     visit edit_user_registration_path
     click_button "Cancel my account"
 
@@ -30,7 +32,6 @@ feature 'user' do
   end
 
   scenario "user deletes post from show page" do
-    user_sign_in(user1)
     visit user_post_path(user1, post1)
     click_link "Delete Post"
 
@@ -38,7 +39,6 @@ feature 'user' do
   end
 
   scenario "user deletes post from log page" do
-    user_sign_in(user1)
     visit my_log_users_path
     click_link "Delete Post"
 
@@ -46,7 +46,6 @@ feature 'user' do
   end
 
   scenario "user deletes video" do
-    user_sign_in(user1)
     visit user_post_path(user1, post1)
     click_link "Delete Video"
 
