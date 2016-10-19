@@ -1,10 +1,17 @@
+<%= will_paginate @trainees %>
+
 <div class="">
   <% @trainees.each do |trainee| %>
-    <%= trainee.username %>
-    <%= trainee.country %>
-    <%= trainee.state %>
-    <%= trainee.city %>
-    <%= button_to "Send Email", "mailto:#{trainee.email}" %>
-    <button>Send Text</button>
+    <div class="row callout">
+      <%= trainee.username %>
+      <%= trainee.country %>
+      <%= trainee.state %>
+      <%= trainee.city %>
+      <% if trainee.admin %>
+        <p>SSC</p>
+      <% end %>
+      <%= link_to "Send Email", "mailto:#{trainee.email}" %>
+      <button>Send Text</button>
+    </div>
   <% end %>
 </div>

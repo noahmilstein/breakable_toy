@@ -7,4 +7,6 @@ class Post < ActiveRecord::Base
   validates :date, presence: true
   validates :body, presence: true
   validates :tags, presence: true
+
+  after_create { validates_presence_of :user }
 end
