@@ -2,9 +2,9 @@ class VideosController < ApplicationController
 
   def index
     if params[:tag]
-      @videos = Video.tagged_with(params[:tag]).page(params[:page]).per_page(10)
+      @videos = Video.tagged_with(params[:tag]).page(params[:page]).per_page(10).order(created_at: "desc")
     else
-      @videos = Video.all.page(params[:page]).per_page(10)
+      @videos = Video.all.page(params[:page]).per_page(10).order(created_at: "desc")
     end
   end
 
