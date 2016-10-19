@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "#{n}title" }
     date Date.today.strftime('%m/%d/%Y')
     body Faker::Lorem.paragraph(3)
-    tags Faker::Lorem.words(4)
+    tags Faker::Lorem.word
     user
 
     trait :with_videos do

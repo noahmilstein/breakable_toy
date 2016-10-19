@@ -16,13 +16,15 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, uniqueness: true, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: /@/ }
   validates :password, presence: true
   validates :phone, presence: true
   validates :country, presence: true
   validates :state, presence: true
   validates :city, presence: true
-  validates :zip, presence: true
+  # zip validation conflicts with FactoryGirl
+  # validates :zip, presence: true, numericality: true, length: { is: 5 }, format: { with: /[0-9]+/ }
+  validates :zip, presence: true, length: { is: 5 }, format: { with: /[0-9]+/ }
   validates :seeking_coach, presence: true
   validates :accept_email, presence: true
   validates :accept_phone, presence: true
