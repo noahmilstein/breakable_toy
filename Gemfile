@@ -9,7 +9,9 @@ gem 'listen'
 gem 'devise'
 gem 'country_select'
 gem 'font-awesome-rails'
-gem 'foundation-rails'
+# gem 'foundation-rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'dotenv'
   gem 'capybara'
@@ -19,6 +21,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'valid_attribute'
   gem 'rb-readline'
+  gem 'faker'
 end
 
 group :test do

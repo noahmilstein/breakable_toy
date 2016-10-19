@@ -1,15 +1,15 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:first_name) { |n| "#{n}firstname" }
-    sequence(:last_name) { |n| "#{n}lastname" }
+    first_name  Faker::Name.first_name
+    last_name  Faker::Name.last_name
     sequence(:username) { |n| "#{n}username" }
     sequence(:email) { |n| "#{n}email@website.com" }
-    sequence(:phone) { |n| "#{n}#{n}#{n}-#{n}#{n}#{n}-#{n}#{n}#{n}#{n}" }
-    sequence(:password) { |n| "#{n}password" }
-    country "United States"
-    state "NY"
-    sequence(:city) { |n| "#{n}city" }
-    sequence(:zip) { |n| "#{n}#{n}#{n}#{n}#{n}" }
+    phone  Faker::PhoneNumber.phone_number
+    password  Faker::Internet.password(6, 20)
+    country  Faker::Address.country
+    state  Faker::Address.state_abbr
+    city  Faker::Address.city
+    zip  Faker::Address.zip
     seeking_coach true
     accept_email true
     accept_phone true

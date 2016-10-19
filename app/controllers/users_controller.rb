@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
 
   def coach_index
-    @coaches = User.where(admin: true)
+    @coaches = User.where(admin: true).page(params[:page]).per_page(10)
   end
 
   def request_admin
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def trainee_index
-    @trainees = User.where(seeking_coach: true)
+    @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
   end
 
   def show_profile
