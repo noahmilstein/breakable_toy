@@ -1,8 +1,8 @@
 <div class="">
   <% if current_user == @video.post.user || current_user.admin %>
     <%= form_for [@video, @comment] do |f| %>
-      <%= f.label(:body, "Comment") %>
-      <%= f.text_area(:body) %>
+      <%= f.label(:body, "Comment") %></br >
+      <%= f.text_area(:body) %></br >
       <%= f.submit("Submit Comment") %>
     <% end %>
   <% end %>

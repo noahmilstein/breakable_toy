@@ -1,11 +1,22 @@
 <div class="">
   <%= form_for [@user, @post] do |f| %>
-    <%= f.label(:title, "Title") %>
-    <%= f.text_field(:title) %>
-    <%= f.label(:date, "Date") %>
-    <%= f.date_field :date, value: Date.today.strftime("%m/%d/%Y") %>
-    <%= f.label(:body, "Body") %>
-    <%= f.text_field(:body) %>
-    <%= f.submit("Submit") %>
+    <div class="">
+      <%= f.label(:title, "Title") %></br >
+      <%= f.text_field(:title) %>
+    </div>
+
+    <div class="">
+      <%= f.label(:date, "Date") %></br >
+      <%= f.date_field :date, value: Date.today.strftime("%m/%d/%Y") %>
+    </div>
+
+    <div class="">
+      <%= f.label(:body, "Body") %></br >
+      <%= f.text_field(:body) %>
+    </div>
+
+    <div class="">
+      <%= f.submit("Submit") %>
+    </div>
   <% end %>
 </div>

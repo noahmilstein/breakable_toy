@@ -1,7 +1,7 @@
 <div class="post-show">
-  <%= @post.title %>
-  <%= @post.date %>
-  <%= @post.body %>
+  Date: <%= @post.date %></br >
+  Title: <%= @post.title %></br >
+  Details: <%= @post.body %></br >
   <% if current_user == @post.user %>
     <%= link_to "Edit Post", edit_post_path(@post) %> |
     <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Are you sure?" } %>
@@ -9,9 +9,10 @@
 </div>
 
 <div class="">
-<% @videos.each do |video| %>
+  <h3>Session videos</h3>
+  <% @videos.each do |video| %>
   <div class="">
-    <%= link_to video.title, post_video_path(@post, video) %>
+    <%= link_to video.title, post_video_path(@post, video) %></br >
     <% if current_user == video.user %>
       <%= link_to "Edit Video", edit_video_path(video) %> |
       <%= link_to "Delete Video", post_video_path(@post, video), method: :delete, data: { confirm: "Are you sure?" } %>

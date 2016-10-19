@@ -3,14 +3,16 @@
 <div class="">
   <% @trainees.each do |trainee| %>
     <div class="row callout">
-      <%= trainee.username %>
-      <%= trainee.country %>
-      <%= trainee.state %>
-      <%= trainee.city %>
       <% if trainee.admin %>
-        <p>SSC</p>
+        <%= trainee.username + ', SSC' %>
+      <% else %>
+        <%= trainee.username %>
       <% end %>
-      <%= link_to "Send Email", "mailto:#{trainee.email}" %>
+    </br >
+      <%= trainee.city %>,
+      <%= trainee.state %>,
+      <%= trainee.country %></br >
+      <%= link_to "Send Email", "mailto:#{trainee.email}" %></br >
       <button>Send Text</button>
     </div>
   <% end %>

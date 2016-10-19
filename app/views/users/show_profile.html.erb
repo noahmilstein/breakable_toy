@@ -1,12 +1,11 @@
 <div class="">
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.username %>
-  <%= @user.email %>
-  <%= @user.phone %>
-  <%= @user.country %>
-  <%= @user.state %>
-  <%= @user.city %>
+  Name: <%= @user.first_name %> <%= @user.last_name %></br >
+  Username: <%= @user.username %></br >
+  Email: <%= @user.email %></br >
+  Phone: <%= @user.phone %></br >
+  Location: <%= @user.city %>,
+  <%= @user.state %>,
+  <%= @user.country %></br >
   <%= @user.zip %>
   <%= button_to "Request Admin Status", request_admin_users_path %>
 
