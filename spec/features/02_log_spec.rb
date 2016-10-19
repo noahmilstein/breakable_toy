@@ -10,9 +10,11 @@ feature 'user has a log' do
   let!(:post4) { FactoryGirl.create(:post, user: user2) }
   let(:post5) { FactoryGirl.build(:post) }
 
-  scenario 'user signs in, sees nav bar' do
+  before :each do
     user_sign_in(user1)
+  end
 
+  scenario 'user signs in, sees nav bar' do
     expect(page).to have_content("Home")
     expect(page).to have_content("Sign Out")
     expect(page).to have_content("My Profile")
@@ -20,7 +22,6 @@ feature 'user has a log' do
   end
 
   scenario "user goes to show page" do
-    user_sign_in(user1)
     click_link "My Profile"
 
     expect(page).to have_content(user1.first_name)
@@ -35,19 +36,16 @@ feature 'user has a log' do
   end
 
   scenario "user sees their posts" do
-    user_sign_in(user1)
     click_link "My Log"
 
     expect(page).to have_content(post1.title)
     expect(page).to have_link(post1.title)
     expect(page).to have_content(post2.date)
     expect(page).to_not have_content(post3.body)
-    expect(page).to have_content(post1.tags)
     expect(page).to_not have_content(post4.title)
   end
 
   scenario "user creates new post in log" do
-    user_sign_in(user1)
     click_link "My Log"
     click_link "Add new entry"
     create_post(post5)
@@ -55,6 +53,5 @@ feature 'user has a log' do
     expect(page).to have_content(post5.title)
     expect(page).to have_content(post5.date)
     expect(page).to have_content(post5.body)
-    expect(page).to have_content(post5.tags)
   end
 end

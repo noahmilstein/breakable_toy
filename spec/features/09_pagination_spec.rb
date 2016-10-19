@@ -29,7 +29,6 @@ feature "user" do
     user_sign_in(user)
     click_link "Video Index"
     click_link "3"
-    save_and_open_page
 
     # expect(page).to have_content(videos.last.title)
     # expect(users.last.admin).to be(false)

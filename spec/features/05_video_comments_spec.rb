@@ -9,9 +9,12 @@ feature 'user' do
   let!(:comment2) { FactoryGirl.create(:comment, user: user1, video: video1) }
   let!(:comment3) { FactoryGirl.create(:comment, user: user1, video: video1) }
 
-  scenario "leaves comment on their own video" do
+  before :each do
     user_sign_in(user1)
     visit post_video_path(post1, video1)
+  end
+
+  scenario "leaves comment on their own video" do
     fill_in "Comment", with: "This is a comment"
     click_button "Submit Comment"
 
@@ -19,9 +22,6 @@ feature 'user' do
   end
 
   scenario "sees all comments on video show page" do
-    user_sign_in(user1)
-    visit post_video_path(post1, video1)
-
     expect(page).to have_content(comment1.body)
     expect(page).to have_content(comment2.body)
     expect(page).to have_content(comment3.body)

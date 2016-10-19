@@ -63,7 +63,6 @@ class PostsController < ApplicationController
     :title,
     :date,
     :body,
-    :tags,
     :user
     )
   end

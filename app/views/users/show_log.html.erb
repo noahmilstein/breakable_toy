@@ -8,7 +8,6 @@
     <div class="">
       <%= link_to post.title, user_post_path(@user, post) %>
       <%= post.date %>
-      <%= post.tags %>
       <%= link_to "Edit Post", edit_post_path(post) %>
       <%= link_to "Delete Post", post, method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
