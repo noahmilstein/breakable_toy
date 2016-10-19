@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
-  before_filter :sanitize_page_params
+
   def coach_index
     @coaches = User.where(admin: true).page(params[:page]).per_page(10)
   end
@@ -62,12 +62,5 @@ class UsersController < ApplicationController
     ]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-  end
-
-  private
-
-  def sanitize_page_params
-    params[:offset] = params[:offset].to_i
-    params[:limit] = params[:limit].to_i
   end
 end
