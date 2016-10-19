@@ -146,5 +146,6 @@ end
 def create_video(video)
   fill_in "Title", with: video.title
   fill_in "Video Url", with: video.url
+  fill_in "Tags (separated by commas)", with: video.tag_list
   click_button "Submit Video"
 end
