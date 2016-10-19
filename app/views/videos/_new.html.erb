@@ -1,14 +1,27 @@
 <div class="">
   <% if current_user == @post.user || current_user.admin %>
     <h3>Add video</h3>
-    <%= form_for [@post, @video] do |f| %>
-      <%= f.label(:title, "Video Title") %>
-      <%= f.text_field(:title) %>
-      <%= f.label(:url, "Video Url") %>
-      <%= f.text_field(:url) %>
-      <%= f.label(:tags, "Video Tags") %>
-      <%= f.text_field(:tags) %>
-      <%= f.submit("Submit Video") %>
-    <% end %>
+    <div class="">
+      <%= form_for [@post, @video] do |f| %>
+        <div class="">
+          <%= f.label(:title, "Video Title") %></br >
+          <%= f.text_field(:title) %>
+        </div>
+
+        <div class="">
+          <%= f.label(:url, "Video Url") %></br >
+          <%= f.text_field(:url) %>
+        </div>
+
+        <div class="">
+          <%= f.label(:tag_list, "Tags (separated by commas)") %></br >
+          <%= f.text_field(:tag_list) %>
+        </div>
+
+        <div class="">
+          <%= f.submit("Submit Video") %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>

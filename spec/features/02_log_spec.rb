@@ -42,7 +42,6 @@ feature 'user has a log' do
     expect(page).to have_link(post1.title)
     expect(page).to have_content(post2.date)
     expect(page).to_not have_content(post3.body)
-    expect(page).to have_content(post1.tags)
     expect(page).to_not have_content(post4.title)
   end
 
@@ -55,6 +54,5 @@ feature 'user has a log' do
     expect(page).to have_content(post5.title)
     expect(page).to have_content(post5.date)
     expect(page).to have_content(post5.body)
-    expect(page).to have_content(post5.tags)
   end
 end
