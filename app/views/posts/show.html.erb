@@ -2,7 +2,6 @@
   <%= @post.title %>
   <%= @post.date %>
   <%= @post.body %>
-  <%= @post.tags %>
   <% if current_user == @post.user %>
     <%= link_to "Edit Post", edit_post_path(@post) %> |
     <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Are you sure?" } %>

@@ -135,7 +135,6 @@ end
 def create_post(post)
   fill_in "Title", with: post.title
   fill_in "Body", with: post.body
-  fill_in "Tags", with: post.tags
   click_button "Submit"
 end
 
