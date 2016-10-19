@@ -11,6 +11,7 @@ gem 'country_select'
 gem 'font-awesome-rails'
 # gem 'foundation-rails'
 gem 'will_paginate', '~> 3.1.0'
+gem 'acts-as-taggable-on'
 group :development, :test do
   gem 'dotenv'
   gem 'capybara'
