@@ -9,7 +9,7 @@ gem 'listen'
 gem 'devise'
 gem 'country_select'
 gem 'font-awesome-rails'
-gem 'foundation-rails'
+# gem 'foundation-rails'
 gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   gem 'dotenv'
