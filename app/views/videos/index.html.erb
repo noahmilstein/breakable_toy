@@ -1,17 +1,11 @@
 <%= will_paginate @videos %>
 
-<div class="" id="tag_cloud">
-  <% tag_cloud Video.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
-
 <div class="">
   <% @videos.each do |video| %>
     <div class="">
-      <%= link_to video.title, post_video_path(video.post, video) %>
+      <%= link_to video.title, post_video_path(video.post, video) %></br >
       <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
-      <%= video.user.username %>
+      <p>Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></p>
       <% unless video.comments.last.nil? %>
         <%= video.comments.last.body %>
       <% end %>
@@ -20,4 +14,10 @@
       </p>
     <% end %>
   </div>
+</div>
+
+<div class="" id="tag_cloud">
+  <% tag_cloud Video.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>
+  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
 </div>
