@@ -11,8 +11,11 @@ feature 'user' do
   let!(:comment2) { FactoryGirl.create(:comment, user: user1, video: video1) }
   let!(:comment3) { FactoryGirl.create(:comment, user: user1, video: video2) }
 
-  scenario "sees videos in video index" do
+  before :each do
     user_sign_in(user1)
+  end
+
+  scenario "sees videos in video index" do
     click_link "Video Index"
 
     expect(page).to have_css("iframe")
@@ -22,7 +25,6 @@ feature 'user' do
   end
 
   scenario "sees first video comment per video on video index" do
-    user_sign_in(user1)
     visit videos_path
 
     expect(page).to have_content(comment2.body)
@@ -31,7 +33,6 @@ feature 'user' do
   end
 
   scenario "user navigates to video show from index" do
-    user_sign_in(user1)
     visit videos_path
     click_link video1.title
 

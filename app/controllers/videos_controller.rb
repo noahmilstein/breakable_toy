@@ -1,7 +1,11 @@
 class VideosController < ApplicationController
 
   def index
-    @videos = Video.all.page(params[:page]).per_page(10)
+    if params[:tag]
+      @videos = Video.tagged_with(params[:tag]).page(params[:page]).per_page(10)
+    else
+      @videos = Video.all.page(params[:page]).per_page(10)
+    end
   end
 
   def show
@@ -41,7 +45,7 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    @post = Post.find(params[:id])
+    @post = @video.post
     @video.update_attributes(video_params)
     if current_user == @video.user
       if @video.save
@@ -75,7 +79,7 @@ class VideosController < ApplicationController
     params.require(:video).permit(
       :title,
       :url,
-      :tags,
+      :tag_list,
     )
   end
 end

@@ -26,7 +26,6 @@ feature 'user has a log' do
     expect(page).to have_content(post1.title)
     expect(page).to have_content(post1.date)
     expect(page).to have_content(post1.body)
-    expect(page).to have_content(post1.tags)
   end
 
   scenario "user adds videos to post" do

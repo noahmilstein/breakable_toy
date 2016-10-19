@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :show]
   end
 
+  get 'tags/:tag', to: 'videos#index', as: :tag
+
   resources :posts do
     resources :videos
   end
