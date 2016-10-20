@@ -1,5 +1,4 @@
 require "rails_helper"
-require "faker"
 
 feature "user" do
   let!(:user1) { FactoryGirl.create(:user) }
