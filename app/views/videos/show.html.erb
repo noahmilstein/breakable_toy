@@ -1,6 +1,7 @@
 <div class="video-show">
   <%= @video.title %></br>
   <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %></br >
+  Created by: <%= @video.user.username %>, at: <%= @video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></br >
   Tags: <%= @video.tag_list %></br >
   <% if current_user == @video.user %>
     <%= link_to "Edit Video", edit_video_path(@video) %> |

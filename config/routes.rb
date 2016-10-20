@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  # make exceptions for users
   resources :users, only: [] do
     collection do
       get '/show_profile', to: 'users#show_profile', as: 'my_profile'
@@ -14,9 +15,11 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'videos#index', as: :tag
 
+  # make exceptions for posts
   resources :posts do
     resources :videos
   end
+  # make exceptions for videos
   resources :videos do
     resources :comments
   end

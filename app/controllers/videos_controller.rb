@@ -3,8 +3,29 @@ class VideosController < ApplicationController
   def index
     if params[:tag]
       @videos = Video.tagged_with(params[:tag]).page(params[:page]).per_page(10).order(created_at: "desc")
+      @comments = Comment.all
+      @users = User.all
     else
       @videos = Video.all.page(params[:page]).per_page(10).order(created_at: "desc")
+      @comments = Comment.all
+      @users = User.all
+    end
+
+    # video_user_hash = {}
+    # @videos.each do |video|
+    #
+    # end
+
+    # @videos = @videos.map { |video| video.user_id = video.user.username }
+
+    # @videos = @videos.map do |video|
+    #   video.user_id = User.where(id: [video.user.id])
+    # end
+
+    videos_json = { "videos": @videos, "current_user": current_user, "comments": @comments }
+    respond_to do |format|
+      format.html
+      format.json { render json: videos_json }
     end
   end
 
@@ -14,6 +35,18 @@ class VideosController < ApplicationController
     @post = @video.post
     @comment = Comment.new
     @comments = @video.comments
+    comment = @comments.first
+    # binding.pry
+    comment_json = { "comment": comment }
+    respond_to do |format|
+      format.json { render json: comment_json }
+      format.html
+    end
+    # user_json = { "user": user }
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: user_json }
+    # end
   end
 
   def create
