@@ -1,5 +1,11 @@
 <%= will_paginate @videos %>
 
+<div class="" id="tag_cloud">
+  <% tag_cloud Video.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>
+  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
 <div class="">
   <% @videos.each do |video| %>
     <div class="">
@@ -14,10 +20,4 @@
       </p>
     <% end %>
   </div>
-</div>
-
-<div class="" id="tag_cloud">
-  <% tag_cloud Video.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>
-  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
 </div>
