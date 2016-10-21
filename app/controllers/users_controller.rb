@@ -5,13 +5,13 @@ class UsersController < ApplicationController
     @coaches = User.where(admin: true).page(params[:page]).per_page(10)
   end
 
+  def trainee_index
+    @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+  end
+
   def request_admin
     @user = current_user
     RequestAdminMailer.request_admin(@user).deliver
-  end
-
-  def trainee_index
-    @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
   end
 
   def show_profile

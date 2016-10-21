@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get '/show_log', to: 'users#show_log', as: 'my_log'
       get '/coach_index', to: 'users#coach_index', as: 'coach_index'
       get '/trainee_index', to: 'users#trainee_index', as: 'trainee_index'
+      # get '/user_index', to: 'users#user_index', as: 'user_index'
       post '/request_admin', to: 'users#request_admin', as: 'request_admin'
     end
     resources :posts, only: [:new, :create]
