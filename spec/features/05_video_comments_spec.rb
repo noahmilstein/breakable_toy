@@ -11,7 +11,7 @@ feature 'user' do
 
   before :each do
     user_sign_in(user1)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
   end
 
   scenario "leaves comment on their own video" do

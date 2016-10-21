@@ -4,11 +4,12 @@
   <%= @user.username %>
   <%= @user.email %>
   <%= @user.phone %>
-  <%= @user.country %>
   <%= @user.state %>
   <%= @user.city %>
   <%= @user.zip %>
-  <%= button_to "Request Admin Status", request_admin_users_path %>
+  <% unless @user.admin %>
+    <%= button_to "Request Admin Status", request_admin_users_path %>
+  <% end %>
 
 
   <% if @user.id == current_user.id %>

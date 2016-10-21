@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     if current_user == @video.user || current_user.admin
       if @comment.save
         flash[:notice] = "Comment successfully created"
-        redirect_to post_video_path(@post, @video)
+        redirect_to video_path(@video)
       else
         @errors = @comment.errors.full_messages.join(", ")
         flash[:notice] = @errors
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     if current_user == @comment.user
       if @comment.save
         flash[:notice] = "Comment successfully updated!"
-        redirect_to post_video_path(@video.post, @video)
+        redirect_to video_path(@video)
       else
         flash[:notice] = "Comment was not updated."
         @errors = @video.errors.full_messages.join(", ")
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
       @video = @comment.video
       @post = @video.post
       @comment.destroy
-      redirect_to post_video_path(@post, @video)
+      redirect_to video_path(@video)
     end
   end
 

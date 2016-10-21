@@ -32,7 +32,7 @@ feature 'user' do
   end
 
   scenario "user deletes post from show page" do
-    visit user_post_path(user1, post1)
+    visit post_path(post1)
     click_link "Delete Post"
 
     expect(page).to_not have_content(post1.title)
@@ -46,7 +46,7 @@ feature 'user' do
   end
 
   scenario "user deletes video" do
-    visit user_post_path(user1, post1)
+    visit post_path(post1)
     click_link "Delete Video"
 
     expect(page).to_not have_content(video1.title)

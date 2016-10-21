@@ -19,7 +19,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /@/ }
   validates :password, presence: true
   validates :phone, presence: true
-  validates :country, presence: true
   validates :state, presence: true
   validates :city, presence: true
   validates :zip, presence: true, numericality: true, format: { with: /[0-9]+/}
