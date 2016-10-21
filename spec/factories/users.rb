@@ -6,7 +6,6 @@ FactoryGirl.define do
     sequence(:email) { |n| "#{n}email@website.com" }
     phone  Faker::PhoneNumber.phone_number
     password  Faker::Internet.password(6, 20)
-    country  Faker::Address.country
     state  Faker::Address.state_abbr
     city  Faker::Address.city
     sequence(:zip) { |n| "#{n}#{n}#{n}#{n}#{n}" }

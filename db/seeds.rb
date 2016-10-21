@@ -7,6 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-100.times { FactoryGirl.build(:user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Internet.user_name, email: Faker::Internet.email, phone: Faker::PhoneNumber.phone_number, password: Faker::Internet.password(6, 20), country: Faker::Address.country, state: Faker::Address.state_abbr, city: Faker::Address.city, zip: Faker::Address.zip, admin: false ) }
-
-20.times { FactoryGirl.create(:user, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, username: Faker::Internet.user_name, email: Faker::Internet.email, phone: Faker::PhoneNumber.phone_number, password: Faker::Internet.password(6, 20), country: Faker::Address.country, state: Faker::Address.state_abbr, city: Faker::Address.city, zip: Faker::Address.zip, admin: true ) }
+20.times do
+  user = FactoryGirl.create(:user)
+  post = FactoryGirl.create(:post, user: user)
+  video = FactoryGirl.create(:video, post: post, user: user)
+  comment = FactoryGirl.create(:comment, video: video, user: user )
+end

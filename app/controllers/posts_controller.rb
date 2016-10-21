@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post.user = @user
     if @post.save
       flash[:notice] = "Log entry submitted"
-      redirect_to user_post_path(@user, @post)
+      redirect_to post_path(@post)
     else
       flash[:notice] = @post.errors.full_messages.join(", ")
       render :new
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     if current_user == @post.user
       if @post.save
         flash[:notice] = "Post successfully updated!"
-        redirect_to user_post_path(@post.user, @post)
+        redirect_to post_path(@post)
       else
         flash[:notice] = "Post was not updated."
         @errors = @post.errors.full_messages.join(", ")

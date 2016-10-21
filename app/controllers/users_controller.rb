@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user, :configure_permitted_parameters, if: :devise_controller?
 
   def coach_index
     @coaches = User.where(admin: true).page(params[:page]).per_page(10)
@@ -15,11 +15,11 @@ class UsersController < ApplicationController
   end
 
   def show_profile
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
   end
 
   def show_log
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
     @posts = @user.posts
   end
 
@@ -51,7 +51,6 @@ class UsersController < ApplicationController
       :username,
       :email,
       :phone,
-      :country,
       :state,
       :city,
       :zip,

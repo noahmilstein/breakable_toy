@@ -19,11 +19,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :country, "Country" %><br />
-    <%= f.country_select :country %>
-  </div>
-
-  <div class="field">
     <%= f.label :state, "State" %><br />
     <%= f.select :state, options_for_select(User::STATES) %>
   </div>

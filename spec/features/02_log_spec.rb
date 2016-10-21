@@ -29,7 +29,6 @@ feature 'user has a log' do
     expect(page).to have_content(user1.email)
     expect(page).to have_content(user1.username)
     expect(page).to have_content(user1.phone)
-    expect(page).to have_content(user1.country)
     expect(page).to have_content(user1.state)
     expect(page).to have_content(user1.city)
     expect(page).to have_content(user1.zip)

@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
       :username,
       :email,
       :phone,
-      :country,
       :state,
       :city,
       :zip,
@@ -34,7 +33,6 @@ class ApplicationController < ActionController::Base
         :username,
         :last_name,
         :phone,
-        :country,
         :state,
         :city,
         :zip
