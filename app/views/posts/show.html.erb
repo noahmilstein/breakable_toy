@@ -16,7 +16,7 @@
       <%= link_to "Edit Video", edit_video_path(video) %> |
       <%= link_to "Delete Video", video_path(video), method: :delete, data: { confirm: "Are you sure?" } %>
     <% elsif current_user != video.user && current_user.admin %>
-      <%= link_to "Delete Video (SPAM)", video_path(@video), method: :delete, data: { confirm: "Are you sure?" } %> |
+      <%= link_to "Delete as SPAM", video_path(video), method: :delete, data: { confirm: "Are you sure?" } %> |
     <% end %>
   </div>
 <% end %>
