@@ -115,7 +115,6 @@ def fill_sign_up_form(user)
   fill_in "Phone", with: user.phone
   fill_in "Password", with: user.password
   fill_in "Confirm Password", with: user.password
-  select user.country, from: "Country"
   select user.state, from: "State"
   fill_in "City", with: user.city
   fill_in "Zip", with: user.zip
