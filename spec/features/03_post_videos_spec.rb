@@ -30,7 +30,7 @@ feature 'user has a log' do
 
   scenario "user adds videos to post" do
     user_sign_in(user1)
-    visit user_post_path(user1, post1)
+    visit post_path(post1)
     create_video(video1)
 
     expect(page).to have_content(video1.title)
@@ -47,7 +47,7 @@ feature 'user has a log' do
 
   scenario "user navigates to video show page, see video" do
     user_sign_in(user2)
-    visit user_post_path(user2, post2)
+    visit post_path(post2)
     click_link video2.title
 
     expect(page).to have_content(video2.title)

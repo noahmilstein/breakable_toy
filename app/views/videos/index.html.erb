@@ -3,7 +3,7 @@
 <div class="">
   <% @videos.each do |video| %>
     <div class="">
-      <%= link_to video.title, post_video_path(video.post, video) %></br >
+      <%= link_to video.title, video_path(video) %></br >
       <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
       <p>Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></p>
       <% unless video.comments.last.nil? %>
