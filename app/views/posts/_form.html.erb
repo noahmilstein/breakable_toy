@@ -5,7 +5,7 @@
     <%= f.label(:date, "Date") %>
     <%= f.date_field :date, value: Date.today.strftime("%m/%d/%Y") %>
     <%= f.label(:body, "Body") %>
-    <%= f.text_field(:body) %>
+    <%= f.text_area(:body) %>
     <%= f.submit("Submit") %>
   <% end %>
 </div>
