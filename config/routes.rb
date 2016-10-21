@@ -9,16 +9,16 @@ Rails.application.routes.draw do
       get '/trainee_index', to: 'users#trainee_index', as: 'trainee_index'
       post '/request_admin', to: 'users#request_admin', as: 'request_admin'
     end
-    resources :posts, only: [:new, :create, :show]
+    resources :posts, only: [:new, :create]
   end
 
   get 'tags/:tag', to: 'videos#index', as: :tag
 
-  resources :posts do
-    resources :videos
+  resources :posts, except: [:new, :create] do
+    resources :videos, except: [:show, :index, :new, :edit, :destroy]
   end
-  resources :videos do
-    resources :comments
+  resources :videos, except: [:create, :update] do
+    resources :comments, except: [:show, :index]
   end
   root 'home#index'
 end

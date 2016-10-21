@@ -16,14 +16,14 @@ feature "user" do
 
   scenario "non-OP/non-admin cannot comment on video" do
     user_sign_in(npc_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
 
     expect(page).to_not have_button("Submit Comment")
   end
 
   scenario "OP can comment on video" do
     user_sign_in(op_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     create_comment(comment1)
 
     expect(page).to have_css("div.comment", text: comment1.body)
@@ -33,7 +33,7 @@ feature "user" do
 
   scenario "admin can comment on video" do
     user_sign_in(admin_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     create_comment(comment2)
 
     expect(page).to have_css("div.comment", text: comment2.body)
@@ -43,14 +43,14 @@ feature "user" do
 
   scenario "non-OP/non-admin cannot create video" do
     user_sign_in(npc_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
 
     expect(page).to_not have_button("Submit Video")
   end
 
   scenario "OP can delete video" do
     user_sign_in(op_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     click_link "Delete Video"
 
     expect(page).to_not have_css("iframe")
@@ -58,7 +58,7 @@ feature "user" do
 
   scenario "OP can edit video" do
     user_sign_in(op_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     click_link "Edit Video"
     fill_in "Tags", with: "Frank Zappa"
     click_button "Submit Video"
@@ -68,7 +68,7 @@ feature "user" do
 
   scenario "non-OP/non-admin cannot edit video" do
     user_sign_in(npc_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
 
     expect(page).to_not have_content("Edit Video")
     expect(page).to_not have_content("Delete Video")
@@ -76,7 +76,7 @@ feature "user" do
 
   scenario "admin cannot edit or delete OP video" do
     user_sign_in(admin_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
 
     expect(page).to_not have_content("Edit Video")
     expect(page).to_not have_content("Delete Video")
@@ -84,7 +84,7 @@ feature "user" do
 
   scenario "non-OP/non-admin cannot edit or delete post" do
     user_sign_in(npc_user)
-    visit user_post_path(op_user, post1)
+    visit post_path(post1)
 
     expect(page).to_not have_link("Edit Post")
     expect(page).to_not have_link("Delete Post")
@@ -92,7 +92,7 @@ feature "user" do
 
   scenario "OP can edit post" do
     user_sign_in(op_user)
-    visit user_post_path(op_user, post1)
+    visit post_path(post1)
     find(".post-show", text: "Edit").click
     fill_in "Title", with: "Mustache"
     click_button "Submit"
@@ -111,7 +111,7 @@ feature "user" do
 
   scenario "admin cannot edit or delete OP post" do
     user_sign_in(admin_user)
-    visit user_post_path(op_user, post1)
+    visit post_path(post1)
 
     expect(page).to_not have_content("Edit Post")
     expect(page).to_not have_content("Delete Post")
@@ -119,7 +119,7 @@ feature "user" do
 
   scenario "OP can edit comment" do
     user_sign_in(op_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     click_link "Edit Comment"
     fill_in "Comment", with: "I have been updated!!!"
     click_button "Submit"
@@ -129,7 +129,7 @@ feature "user" do
 
   scenario "OP can delete comment" do
     user_sign_in(op_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
     click_link "Delete Comment"
 
     expect(page).to_not have_content(comment1.body)
@@ -137,7 +137,7 @@ feature "user" do
 
   scenario "non-OP/non-admin cannot edit or delete comment" do
     user_sign_in(npc_user)
-    visit post_video_path(post1, video1)
+    visit video_path(video1)
 
     expect(page).to_not have_link("Edit Comment")
     expect(page).to_not have_link("Delete Comment")
@@ -145,7 +145,7 @@ feature "user" do
 
   scenario "admin cannot edit or delete OP comment" do
     user_sign_in(admin_user2)
-    visit post_video_path(post2, video2)
+    visit video_path(video2)
 
     expect(page).to_not have_link("Edit Comment")
     expect(page).to_not have_link("Delete Comment")

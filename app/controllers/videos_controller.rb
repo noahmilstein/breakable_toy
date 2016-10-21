@@ -26,7 +26,7 @@ class VideosController < ApplicationController
     if current_user == @post.user
       if @video.save
         flash[:notice] = "Video successfully created"
-        redirect_to user_post_path(@user, @post)
+        redirect_to post_path(@post)
       else
         @errors = @video.errors.full_messages.join(", ")
         flash[:notice] = @errors
@@ -50,7 +50,7 @@ class VideosController < ApplicationController
     if current_user == @video.user
       if @video.save
         flash[:notice] = "Video successfully updated!"
-        redirect_to post_video_path(@post, @video)
+        redirect_to video_path(@video)
       else
         flash[:notice] = "Video was not updated."
         @errors = @video.errors.full_messages.join(", ")
@@ -69,7 +69,7 @@ class VideosController < ApplicationController
       @post = @video.post
       @user = @video.user
       @video.destroy
-      redirect_to user_post_path(@user, @post)
+      redirect_to post_path(@post)
     end
   end
 

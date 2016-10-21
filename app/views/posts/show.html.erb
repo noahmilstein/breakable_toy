@@ -11,10 +11,10 @@
 <div class="">
 <% @videos.each do |video| %>
   <div class="">
-    <%= link_to video.title, post_video_path(@post, video) %>
+    <%= link_to video.title, video_path(video) %>
     <% if current_user == video.user %>
       <%= link_to "Edit Video", edit_video_path(video) %> |
-      <%= link_to "Delete Video", post_video_path(@post, video), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Delete Video", video_path(video), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
 <% end %>
