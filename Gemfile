@@ -22,7 +22,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'rb-readline'
   gem 'faker'
-  gem 'capybara-webkit'
+  gem 'capybara-webkit', '~> 1.1.1'
 end
 
 group :test do
