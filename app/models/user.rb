@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :image, ImageUploader
   after_create :set_coach, :welcome_email
 
   def set_coach

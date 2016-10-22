@@ -27,9 +27,9 @@
             <%= link_to "Trainee Index", trainee_index_users_path %> |
           <% end %>
           <% if current_user.admin %>
-            Logged in as coach: <strong> <%= current_user.username %></strong>
+            Logged in as coach: <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
           <% else %>
-            Logged in as <strong> <%= current_user.username %></strong>
+            Logged in as <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
           <% end %>
         </div>
       <% else %>
