@@ -27,7 +27,7 @@ feature 'sign up', %Q{
     expect(page).to have_content("can't be blank")
   end
 
-  scenario "password and confirmation don't match", js: true do
+  scenario "password and confirmation don't match" do
     visit new_user_registration_path
     fill_in "First Name", with: user2.first_name
     fill_in "Last Name", with: user2.last_name

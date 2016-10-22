@@ -41,7 +41,7 @@ GEM
     acts-as-taggable-on (4.0.0)
       activerecord (>= 4.0)
     addressable (2.4.0)
-    arel (7.1.3)
+    arel (7.1.4)
     bcrypt (3.1.11)
     builder (3.2.2)
     capybara (2.10.1)
@@ -51,9 +51,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.1.0)
-      capybara (~> 2.0, >= 2.0.2)
-      json
     coderay (1.1.1)
     concurrent-ruby (1.0.2)
     coveralls (0.8.15)
@@ -174,7 +171,7 @@ GEM
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
-    ruby_dep (1.4.0)
+    ruby_dep (1.5.0)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -227,7 +224,6 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   capybara
-  capybara-webkit
   coveralls
   database_cleaner
   devise
