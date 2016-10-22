@@ -11,7 +11,7 @@ feature "profile photo" do
     fill_in "Username", with: "Steve"
     fill_in "Email", with: "Steve@Steve.com"
     fill_in "Phone", with: "666-666-6666"
-    attach_file 'Add Avatar', "#{Rails.root}/spec/support/Dr_John_Zoidberg.png"
+    attach_file "Add Avatar", "#{Rails.root}/spec/support/Dr_John_Zoidberg.png"
     fill_in "Password", with: "password"
     fill_in "Confirm Password", with: "password"
     select "NY", from: "State"
