@@ -10,6 +10,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'acts-as-taggable-on'
+gem 'carrierwave'
 group :development, :test do
   gem 'dotenv'
   gem 'capybara'

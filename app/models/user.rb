@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   after_create :set_coach, :welcome_email
 
+  mount_uploader :image, ImageUploader
+
   def set_coach
     self.update(admin: true) if ENV['COACH_EMAILS'].split(",").include?(email)
   end
