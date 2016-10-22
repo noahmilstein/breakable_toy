@@ -1,0 +1,6 @@
+cat .jshintignore
+
+vendor/*
+client/**/*.js
+client/*
+webpack.config.babel.js
