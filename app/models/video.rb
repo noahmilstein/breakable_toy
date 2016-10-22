@@ -9,6 +9,7 @@ class Video < ActiveRecord::Base
   # url validation conflicts with FactoryGirl
   # validates :url, presence: true, uniqueness: true
 
-  acts_as_taggable
+  acts_as_taggable_on :tags
+  # acts_as_taggable
   # attr_accessor :tag_list
 end
