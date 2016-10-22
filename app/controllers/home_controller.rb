@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def index
     currentUser = current_user.blank?
     unless current_user.nil?
