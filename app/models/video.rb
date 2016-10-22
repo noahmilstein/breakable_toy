@@ -6,9 +6,5 @@ class Video < ActiveRecord::Base
   has_many :comments
 
   validates :title, presence: true
-  # url validation conflicts with FactoryGirl
-  # validates :url, presence: true, uniqueness: true
-
   acts_as_taggable
-  # attr_accessor :tag_list
 end
