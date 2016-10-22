@@ -2,7 +2,7 @@
   <%= @video.title %>
   <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
   <p>
-    Tags: <%= @video.tag_list %>
+    Tags: <%= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
   </p>
   <% if current_user == @video.user %>
     <%= link_to "Edit Video", edit_video_path(@video) %> |
