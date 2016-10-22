@@ -7,9 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'listen'
 gem 'devise'
-# gem 'country_select'
 gem 'font-awesome-rails'
-# gem 'foundation-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'acts-as-taggable-on'
 group :development, :test do
@@ -22,7 +20,6 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'rb-readline'
   gem 'faker'
-  gem 'capybara-webkit', '~> 1.1.1'
 end
 
 group :test do
