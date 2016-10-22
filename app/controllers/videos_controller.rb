@@ -23,6 +23,10 @@ class VideosController < ApplicationController
     @video.user_id = @user.id
     @video.post_id = @post.id
     @video.embed_id = @video.url.split("=").last
+    tags = params[:video][:tag_list][0].split(',')
+    tags.each do |tag|
+      @video.tag_list.add(tag)
+    end
     if current_user == @post.user
       if @video.save
         flash[:notice] = "Video successfully created"
