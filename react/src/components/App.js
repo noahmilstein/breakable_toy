@@ -6,7 +6,9 @@ export default class App extends Component {
     super(props);
     this.state = {
       currentUser: "",
-      admin: ""
+      admin: "",
+      userName: "",
+      avatar: ""
     };
     this.getUser = this.getUser.bind(this);
   }
@@ -17,20 +19,21 @@ export default class App extends Component {
       contentType: 'application/json'
     })
     .done(data => {
-      this.setState({ currentUser: data.currentUser, admin: data.admin });
+      this.setState({ currentUser: data.currentUser, admin: data.admin, userName: data.userName, avatar: data.avatar });
     });
   }
 
   componentDidMount() {
     this.getUser();
   }
-
   render() {
     return(
-      <div>
+      <div className="container">
         <MenuBar
           currentUser={this.state.currentUser}
           admin={this.state.admin}
+          userName={this.state.userName}
+          avatar={this.state.avatar}
         />
       </div>
     );
