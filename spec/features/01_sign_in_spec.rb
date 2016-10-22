@@ -1,11 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-feature 'sign up', %Q{
-  As an unauthenticaed user
-  I want to sign up
-  so that I can track my breakable toy progress
-} do
+feature 'sign up' do
 
   let(:user) { User.new(first_name: "firstname", last_name: "lastname", username: "username", email: "email@email.com", phone: "(111) 111-1111", password: "password", city: "Boston", state: "MA", zip: "02111") }
   let!(:user2) { FactoryGirl.create(:user) }
