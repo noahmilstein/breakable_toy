@@ -1,20 +1,29 @@
-<%= will_paginate @videos %>
-
-<div class="">
-  <% @videos.each do |video| %>
-    <div class="">
-      <%= link_to video.title, video_path(video) %></br >
-      <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
-      <p>Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></p>
-      <% unless video.comments.last.nil? %>
-        <%= video.comments.last.body %>
-      <% end %>
-      <p>
-        Tags: <%= raw video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
-      </p>
-    <% end %>
-  </div>
+<div class="text-center">
+  <%= will_paginate @videos %>
 </div>
+
+<div class="container">
+  <% @videos.each do |video| %>
+    <div class="row">
+
+      <div class="col-sm-6 text-center">
+        <%= link_to video.title, video_path(video) %></br >
+        <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
+        <p>Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></p>
+        <p>Tags: <%= raw video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %></p>
+      </div>
+
+      <div class="col-sm-6 video-index">
+        <% unless video.comments.last.nil? %>
+          <%= video.comments.last.user.username %>
+          <%= video.comments.last.body %>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
 
 <div class="" id="tag_cloud">
   <% tag_cloud Video.tag_counts.sort { |x, y| x.name <=> y.name }, %w[s m l] do |tag, css_class| %>

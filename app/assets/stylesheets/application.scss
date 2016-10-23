@@ -1,19 +1,47 @@
 // @import "*";
 @import "font-awesome";
-// @import "foundation";
 
-// #tag_cloud {
-//   width: 400px;
-//   line-height: 1.6em;
-//   .s { font-size: 0.8em; }
-//   .m { font-size: 1.2em; }
-//   .l { font-size: 1.8em; }
-// }
-//
-// img {
-//   max-height: 30px;
-// }
-//
-// #dropdownButton {
-//   height: 65px;
-// }
+html {
+// background-color: #49708A;
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+  padding:0;
+  height:100%;
+}
+
+// position:fixed;
+// top:0px;
+// bottom:0px;
+// left:0px;
+// right:0px;
+
+.show-log {
+  margin: auto;
+  width: 50%;
+  border: 3px;
+  padding: 10px;
+}
+
+.pagination {
+  margin: auto;
+}
+
+.coaches {
+  margin-bottom: 10px;
+}
+
+div {
+  font-family: "Arial", "Helvetica", "sans-serif";
+}
+
+footer {
+  height: 60px;
+  background-color: #49708A;
+  position: absolute;
+  bottom:0;
+  width:100%;
+  // background:#6cf;
+}
