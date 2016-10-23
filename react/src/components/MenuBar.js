@@ -19,7 +19,9 @@ export default class MenuBar extends Component {
     const resize = {
       height: "20px"
     }
-
+    const size = {
+      height: "54px"
+    }
 
     if (this.props.currentUser === false) {
       signOut = <Button href="/users/sign_out" data-method="delete">Sign Out</Button>
@@ -34,8 +36,8 @@ export default class MenuBar extends Component {
         loggedInAs = <Button href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
       }
     } else {
-      signIn = <Button href="/users/sign_in" style={resize}>Sign In</Button>
-      signUp = <Button href="/users/sign_up" style={resize}>Sign Up</Button>
+      signIn = <Button href="/users/sign_in">Sign In</Button>
+      signUp = <Button href="/users/sign_up">Sign Up</Button>
     }
 
     return(
@@ -43,7 +45,7 @@ export default class MenuBar extends Component {
         <ButtonToolbar id="buttonToolBar" >
           <ButtonGroup id="buttonGroup" justified>
             <Button href='/' id="myProfileButton">Home</Button>
-            <DropdownButton title="Menu" id="dropdownButton">
+            <DropdownButton title="Menu" id="dropdownButton" style={size}>
               <MenuItem eventKey="1" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
               <MenuItem eventKey="2" href='/users/show_log' id="myLogButton">My Log</MenuItem>
               <MenuItem eventKey="3" href='/videos' id="videoIndexButton">Video Index</MenuItem>
