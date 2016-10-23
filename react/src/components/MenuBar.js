@@ -24,28 +24,28 @@ export default class MenuBar extends Component {
     }
 
     if (this.props.currentUser === false) {
-      signOut = <Button href="/users/sign_out" data-method="delete">Sign Out</Button>
+      signOut = <Button bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
       image = <img src={avatar} alt="mustache" className="img-responsive pull-right" style={resize}/>
       if (this.props.admin === false) {
         indexUrl = "/users/coach_index"
         indexName = "Coach Index"
-        loggedInAs = <Button href="/users/show_profile" id="myProfileButton">Logged in as {userName} {image}</Button>
+        loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as {userName} {image}</Button>
       } else {
         indexUrl = "/users/trainee_index"
         indexName = "Trainee Index"
-        loggedInAs = <Button href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
+        loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
       }
     } else {
-      signIn = <Button href="/users/sign_in">Sign In</Button>
-      signUp = <Button href="/users/sign_up">Sign Up</Button>
+      signIn = <Button bsStyle="primary" href="/users/sign_in">Sign In</Button>
+      signUp = <Button bsStyle="primary" href="/users/sign_up">Sign Up</Button>
     }
 
     return(
       <div className="row">
-        <ButtonToolbar id="buttonToolBar" >
+        <ButtonToolbar bsStyle="primary" id="buttonToolBar" >
           <ButtonGroup id="buttonGroup" justified>
-            <Button href='/' id="myProfileButton">Home</Button>
-            <DropdownButton title="Menu" id="dropdownButton" style={size}>
+            <Button bsStyle="primary" href='/' id="myProfileButton">Home</Button>
+            <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
               <MenuItem eventKey="1" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
               <MenuItem eventKey="2" href='/users/show_log' id="myLogButton">My Log</MenuItem>
               <MenuItem eventKey="3" href='/videos' id="videoIndexButton">Video Index</MenuItem>
