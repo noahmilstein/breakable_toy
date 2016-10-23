@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def show_log
     @user = User.find(current_user.id)
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page]).per_page(10)
   end
 
   def destroy

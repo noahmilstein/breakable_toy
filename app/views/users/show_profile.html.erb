@@ -1,18 +1,24 @@
-<div class="">
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-  <%= @user.username %>
-  <%= @user.email %>
-  <%= @user.phone %>
-  <%= @user.state %>
-  <%= @user.city %>
-  <%= @user.zip %>
-  <% unless @user.admin %>
-    <%= button_to "Request Admin Status", request_admin_users_path %>
-  <% end %>
-
-
-  <% if @user.id == current_user.id %>
-    <%= link_to("Edit Profile", edit_user_registration_path) %>
-  <% end %>
+<div class="container">
+  <div class="row col-sm-2"></div>
+  <div class="row col-sm-4">
+    <p><%= @user.username %></p>
+    <p><%= @user.first_name %> <%= @user.last_name %></p>
+    <p><%= @user.email %></p>
+    <p><%= @user.phone %></p>
+    <p><%= @user.state %>, <%= @user.city %>, <%= @user.zip %></p>
+    <p>
+      <% unless @user.admin %>
+        <%= button_to "Request Admin Status", request_admin_users_path %>
+      <% end %>
+    </p>
+    <p>
+      <% if @user.id == current_user.id %>
+        <%= link_to("Edit Profile", edit_user_registration_path) %>
+      <% end %>
+    </p>
+  </div>
+  <div class="row col-sm-4 profile-pic">
+    <%= image_tag @user.image %>
+  </div>
+  <div class="row col-sm-2"></div>
 </div>
