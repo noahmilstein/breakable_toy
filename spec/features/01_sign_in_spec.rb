@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 
 feature 'sign up', %Q{
-  As an unauthenticaed user
+  As an unauthenticated user
   I want to sign up
   so that I can track my breakable toy progress
 } do
