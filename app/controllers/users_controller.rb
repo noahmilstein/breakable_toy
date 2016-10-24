@@ -17,6 +17,11 @@ class UsersController < ApplicationController
 
   def trainee_index
     @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+    @hash = Gmaps4rails.build_markers(@trainees) do |trainee, marker|
+      marker.lat trainee.latitude
+      marker.lng trainee.longitude
+      marker.infowindow "#{trainee.first_name}#{trainee.last_name} (#{trainee.username}) | <a href=mailto:#{trainee.email}>#{trainee.email}</a> | #{trainee.city}, #{trainee.state} #{trainee.zip}"
+    end
   end
 
   def show_profile
