@@ -6,44 +6,45 @@
 
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
-    <%#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/foundation.min.css">%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
 
   </head>
 
   <body>
-    <nav id="app">
-      <% if user_signed_in? %>
-        <div class="">
-          <%= link_to "Home", root_path %> |
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> |
-          <%= link_to "My Profile", my_profile_users_path %> |
-          <%= link_to "My Log", my_log_users_path %> |
-          <%= link_to "Video Index", videos_path %> |
-          <% if !current_user.admin %>
-            <%= link_to "Coach Index", coach_index_users_path %> |
-          <% else %>
-            <%= link_to "Trainee Index", trainee_index_users_path %> |
-          <% end %>
-          <% if current_user.admin %>
-            Logged in as coach: <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
-          <% else %>
-            Logged in as <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="">
-          <%= link_to "Home", root_path %> |
-          <%= link_to "Sign Up", new_user_registration_path %> |
-          <%= link_to "Sign In", new_user_session_path %>
-        </div>
-      <% end %>
-    </nav>
-
+    <div class="main">
+      <nav id="app">
+        <% if user_signed_in? %>
+          <div class="">
+            <%= link_to "Home", root_path %> |
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> |
+            <%= link_to "My Profile", my_profile_users_path %> |
+            <%= link_to "My Log", my_log_users_path %> |
+            <%= link_to "Video Index", videos_path %> |
+            <% if !current_user.admin %>
+              <%= link_to "Coach Index", coach_index_users_path %> |
+            <% else %>
+              <%= link_to "Trainee Index", trainee_index_users_path %> |
+            <% end %>
+            <% if current_user.admin %>
+              Logged in as coach: <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
+            <% else %>
+              Logged in as <strong> <%= current_user.username %> <%= image_tag current_user.image.small_profile_picture %></strong>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="">
+            <%= link_to "Home", root_path %> |
+            <%= link_to "Sign Up", new_user_registration_path %> |
+            <%= link_to "Sign In", new_user_session_path %>
+          </div>
+        <% end %>
+      </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <footer></footer>
+    </div>
+    <footer>
+    </footer>
   </body>
 </html>

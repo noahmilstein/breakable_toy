@@ -2,7 +2,7 @@
   <%= will_paginate @trainees %>
 </div>
 
-<div class="">
+<div class="coaches text-center">
   <% @trainees.each do |trainee| %>
     <div class="row callout">
       <%= trainee.username %><% if trainee.admin %>, SSC<% end %>
@@ -17,3 +17,5 @@
     </div>
   <% end %>
 </div>
+
+<%= render "map" %>

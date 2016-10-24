@@ -2,6 +2,19 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   after_create :set_coach, :welcome_email
 
+  # include Geocoder::Model::Mongoid #not sure if this is necessary
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
+  def address_changed?
+    attrs = %w(city state zip)
+    attrs.any? {|a| send "#{a}_changed?"}
+  end
+
+  def address
+    [city, state, zip].compact.join(", ")
+  end
+
   def set_coach
     self.update(admin: true) if ENV['COACH_EMAILS'].split(",").include?(email)
   end

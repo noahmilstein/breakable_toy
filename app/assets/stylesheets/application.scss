@@ -1,22 +1,26 @@
 // @import "*";
 @import "font-awesome";
 
-html {
-// background-color: #49708A;
-}
-
 body {
-  overflow: hidden;
+  overflow: scroll;
   margin: 0;
   padding:0;
   height:100%;
+  min-height:100%;
+  margin-bottom: 65px;
+  clear: both;
 }
 
-// position:fixed;
-// top:0px;
-// bottom:0px;
-// left:0px;
-// right:0px;
+.map {
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 125px;
+  border: solid medium;
+}
+
+.main {
+  margin: 65px;
+}
 
 .show-log {
   margin: auto;
@@ -38,10 +42,18 @@ div {
 }
 
 footer {
-  height: 60px;
+  height: 65px;
   background-color: #49708A;
-  position: absolute;
   bottom:0;
   width:100%;
-  // background:#6cf;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 3em;
+  margin-top: -3em;
+}
+
+.profile-pic img {
+  height: 65px;
+  width: auto;
 }
