@@ -16,6 +16,7 @@ export default class MenuBar extends Component {
     let userName = this.props.userName
     let avatar = `${this.props.avatar}`
     let image = ""
+    let dropDown = ""
     const resize = {
       height: "20px"
     }
@@ -24,8 +25,6 @@ export default class MenuBar extends Component {
     }
 
     if (this.props.currentUser === false) {
-      signOut = <Button bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
-      image = <img src={avatar} alt="mustache" className="img-responsive pull-right" style={resize}/>
       if (this.props.admin === false) {
         indexUrl = "/users/coach_index"
         indexName = "Coach Index"
@@ -35,9 +34,21 @@ export default class MenuBar extends Component {
         indexName = "Trainee Index"
         loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
       }
+      signOut = <Button bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
+      image = <img src={avatar} alt="mustache" className="img-responsive pull-right" style={resize}/>
+      dropDown =  <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
+                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">About</MenuItem>
+                    <MenuItem eventKey="2" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
+                    <MenuItem eventKey="3" href='/users/show_log' id="myLogButton">My Log</MenuItem>
+                    <MenuItem eventKey="4" href='/videos' id="videoIndexButton">Video Index</MenuItem>
+                    <MenuItem eventKey="5" id="userIndexButton" href={indexUrl}>{indexName}</MenuItem>
+                  </DropdownButton>
     } else {
       signIn = <Button bsStyle="primary" href="/users/sign_in">Sign In</Button>
       signUp = <Button bsStyle="primary" href="/users/sign_up">Sign Up</Button>
+      dropDown =  <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
+                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">About</MenuItem>
+                  </DropdownButton>
     }
 
     return(
@@ -45,12 +56,7 @@ export default class MenuBar extends Component {
         <ButtonToolbar bsStyle="primary" id="buttonToolBar" >
           <ButtonGroup id="buttonGroup" justified>
             <Button bsStyle="primary" href='/' id="myProfileButton">Home</Button>
-            <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
-              <MenuItem eventKey="1" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
-              <MenuItem eventKey="2" href='/users/show_log' id="myLogButton">My Log</MenuItem>
-              <MenuItem eventKey="3" href='/videos' id="videoIndexButton">Video Index</MenuItem>
-              <MenuItem eventKey="4" id="userIndexButton" href={indexUrl}>{indexName}</MenuItem>
-            </DropdownButton>
+            {dropDown}
             {loggedInAs}
             {signOut}
             {signIn}

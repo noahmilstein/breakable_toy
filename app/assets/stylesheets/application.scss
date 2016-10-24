@@ -1,13 +1,16 @@
 // @import "*";
 @import "font-awesome";
 
+html {
+  margin-top: -4%;
+}
 body {
   overflow: scroll;
   margin: 0;
   padding:0;
   height:100%;
   min-height:100%;
-  margin-bottom: 65px;
+  margin-bottom: 130px;
   clear: both;
 }
 
@@ -42,18 +45,43 @@ div {
 }
 
 footer {
-  height: 65px;
+  height: 130px;
   background-color: #49708A;
   bottom:0;
   width:100%;
   clear: both;
   position: relative;
   z-index: 10;
-  height: 3em;
-  margin-top: -3em;
+  // height: 3em;
+  // margin-top: -3em;
 }
 
 .profile-pic img {
   height: 65px;
   width: auto;
+}
+
+// #home a:link { color: #70DB93; }
+// #home a:visited { color: #70DB93; }
+// #home a:hover { color: #70DB93; }
+// #home a:active { color: #70DB93; }
+
+footer a:link {
+  color: black;
+}
+
+footer a:visited {
+  color: black;
+}
+
+footer a:hover {
+  color: #70DB93;
+}
+
+footer a {
+  font-size: 110%;
+}
+
+.links {
+  margin: auto;
 }

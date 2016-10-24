@@ -28,7 +28,7 @@ feature 'user' do
 
     expect(page).to have_content("Bye! Your account has been successfully "\
     "cancelled. We hope to see you again soon.")
-    expect(page).to have_content("This is the landing page")
+    expect(page).to have_content("Welcome to Coachr")
   end
 
   scenario "user deletes post from show page" do

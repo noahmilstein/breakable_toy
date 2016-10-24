@@ -17,4 +17,7 @@ class HomeController < ApplicationController
       format.html
     end
   end
+
+  def about
+  end
 end

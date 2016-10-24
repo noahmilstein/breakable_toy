@@ -1,2 +1,9 @@
-<h1>This is the landing page</h1>
-<h4>Contents TBD later</h4>
+<div class="text-center">
+  <% if user_signed_in? %>
+    <h1>Welcome to Coachr</h1>
+    <h3>by and for Starting Strength Coaches</h3>
+  <% else %>
+    <h1>Welcome to Coachr</h1>
+    <h3>Please sign in to utilize our services</h3>
+  <% end %>
+</div>

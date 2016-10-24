@@ -20,5 +20,10 @@ Rails.application.routes.draw do
   resources :videos, except: [:create, :update] do
     resources :comments, except: [:show, :index]
   end
+  resources :home, only: [:about] do
+    collection do
+      get '/about', to: 'home#about', as: 'about'
+    end
+  end
   root 'home#index'
 end
