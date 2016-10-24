@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @hash = Gmaps4rails.build_markers(@coaches) do |coach, marker|
       marker.lat coach.latitude
       marker.lng coach.longitude
-      marker.infowindow "#{coach.first_name}#{coach.last_name} (#{coach.username}) | #{coach.email} | #{coach.city}, #{coach.state} #{coach.zip}"
+      marker.infowindow "#{coach.first_name}#{coach.last_name} (#{coach.username}) | <a href=mailto:#{coach.email}>#{coach.email}</a> | #{coach.city}, #{coach.state} #{coach.zip}"
     end
   end
 
