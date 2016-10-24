@@ -107,6 +107,7 @@ GEM
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     formatador (0.2.5)
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -264,6 +265,7 @@ DEPENDENCIES
   faker
   fog-aws
   font-awesome-rails
+  geocoder
   jquery-rails
   launchy
   listen

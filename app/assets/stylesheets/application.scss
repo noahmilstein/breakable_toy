@@ -1,22 +1,12 @@
 // @import "*";
 @import "font-awesome";
 
-html {
-// background-color: #49708A;
-}
-
 body {
-  overflow: hidden;
+  // overflow: visible;
   margin: 0;
   padding:0;
   height:100%;
 }
-
-// position:fixed;
-// top:0px;
-// bottom:0px;
-// left:0px;
-// right:0px;
 
 .show-log {
   margin: auto;
@@ -43,5 +33,9 @@ footer {
   position: absolute;
   bottom:0;
   width:100%;
-  // background:#6cf;
+}
+
+.profile-pic img {
+  height: 65px;
+  width: auto;
 }

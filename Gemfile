@@ -13,6 +13,7 @@ gem 'acts-as-taggable-on'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
+gem 'geocoder'
 group :development, :test do
   gem 'dotenv'
   gem 'dotenv-rails'
