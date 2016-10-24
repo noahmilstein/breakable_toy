@@ -14,6 +14,8 @@ gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
 gem 'geocoder'
+gem 'gmaps4rails'
+gem 'coffee-rails'
 group :development, :test do
   gem 'dotenv'
   gem 'dotenv-rails'

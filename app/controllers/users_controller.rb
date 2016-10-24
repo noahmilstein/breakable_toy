@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
   def coach_index
     @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+    @hash = Gmaps4rails.build_markers(@coaches) do |coach, marker|
+      marker.lat coach.latitude
+      marker.lng coach.longitude
+      marker.infowindow "#{coach.first_name}#{coach.last_name} (#{coach.username}) | #{coach.email} | #{coach.city}, #{coach.state} #{coach.zip}"
+    end
   end
 
   def request_admin
