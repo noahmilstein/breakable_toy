@@ -10,11 +10,18 @@ body {
   margin-bottom: 65px;
   clear: both;
 }
-.main {
-  // margin-bottom: 65px;
-  margin: 65px;
 
+.map {
+  margin: auto;
+  margin-top: 60px;
+  margin-bottom: 125px;
+  border: solid medium;
 }
+
+.main {
+  margin: 65px;
+}
+
 .show-log {
   margin: auto;
   width: 50%;
