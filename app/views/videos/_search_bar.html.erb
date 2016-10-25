@@ -1,5 +1,8 @@
-<%= form_tag search_videos_path, method: 'get' do %>
-  <%= label_tag(:search, "Search") %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search", name: nil %>
-<% end %>
+<div class="input-group" style="margin: auto">
+  <%= form_tag search_videos_path, method: 'get', class: 'navbar-form', role: 'search', id: "search-form" do %>
+    <span class="input-group-btn">
+      <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
+      <%= text_field_tag :search, "", placeholder: "Search by video tag", class: 'form-control' %>
+    </span>
+  <% end %>
+</div>

@@ -1,9 +1,15 @@
-<div class="">
+<div class="container" style="width:50%">
   <% if current_user == @video.post.user || current_user.admin %>
     <%= form_for [@video, @comment] do |f| %>
-      <%= f.label(:body, "Comment") %>
-      <%= f.text_area(:body) %>
-      <%= f.submit("Submit Comment") %>
+      <div class="form-group row" style="margin:auto">
+        <div class="">
+          <%= f.label(:body, "Comment") %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="">
+          <%= f.submit "Submit Comment", class: "form-control" %>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>

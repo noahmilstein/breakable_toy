@@ -1,22 +1,24 @@
-<div class="container" style="width:100%">
-  <div class="row col-sm-6 my-profile" style="width:50%">
-    <p><%= @user.username %></p>
-    <p><%= @user.first_name %> <%= @user.last_name %></p>
-    <p><%= @user.email %></p>
-    <p><%= @user.phone %></p>
-    <p><%= @user.state %>, <%= @user.city %>, <%= @user.zip %></p>
-    <p>
-      <% unless @user.admin %>
-        <%= button_to "Request Admin Status", request_admin_users_path %>
-      <% end %>
-    </p>
-    <p>
-      <% if @user.id == current_user.id %>
-        <%= link_to("Edit Profile", edit_user_registration_path) %>
-      <% end %>
-    </p>
-  </div>
-  <div class="row col-sm-6 profile-pic" style="width:50%">
-    <%= image_tag @user.image %>
+<div class="container panel panel-default profile-container" style="width:100%">
+  <div class="row">
+    <div class=" col-sm-6 my-profile panel" style="width:50%">
+      <p><%= @user.username %></p>
+      <p><%= @user.first_name %> <%= @user.last_name %></p>
+      <p><%= @user.email %></p>
+      <p><%= @user.phone %></p>
+      <p><%= @user.state %>, <%= @user.city %>, <%= @user.zip %></p>
+      <p>
+        <% unless @user.admin %>
+          <%= button_to "Request Admin Status", request_admin_users_path %>
+        <% end %>
+      </p>
+      <p>
+        <% if @user.id == current_user.id %>
+          <%= link_to("Edit Profile", edit_user_registration_path) %>
+        <% end %>
+      </p>
+    </div>
+    <div class=" col-sm-6 profile-pic panel" style="width:50%">
+      <%= image_tag @user.image %>
+    </div>
   </div>
 </div>
