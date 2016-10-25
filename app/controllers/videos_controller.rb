@@ -10,9 +10,7 @@ class VideosController < ApplicationController
   end
 
   def search
-    if params[:search]
-      @results = Video.tagged_with(params[:search])
-    end
+    @results = Video.tagged_with(params[:search]) if params[:search]
   end
 
   def show
