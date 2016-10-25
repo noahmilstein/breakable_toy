@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
   acts_as_taggable
 
   def self.search(search)
-    videos = Video.tagged_with("#{search}", :any => true)
+    videos = Video.tagged_with(search.to_s, :any => true)
     videos
   end
 end
