@@ -1,5 +1,5 @@
 source 'https://rubygems.org/'
-ruby ENV['CUSTOM_RUBY_VERSION']
+ruby '2.3.1'
 
 gem 'rails', '~> 5.0'
 gem 'pg', '~> 0.15'
