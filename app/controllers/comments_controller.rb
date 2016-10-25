@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user, :configure_permitted_parameters, if: :devise_controller?
 
   def create
     @user = current_user
