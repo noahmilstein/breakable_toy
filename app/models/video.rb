@@ -10,5 +10,6 @@ class Video < ActiveRecord::Base
 
   def self.search(search)
     videos = Video.tagged_with("#{search}", :any => true)
+    videos
   end
 end
