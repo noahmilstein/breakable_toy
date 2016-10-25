@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :videos, except: [:show, :index, :new, :edit, :destroy]
   end
   resources :videos, except: [:create, :update] do
+    collection do
+      get "/search", to: "videos#search", as: "search"
+    end
     resources :comments, except: [:show, :index]
   end
   resources :home, only: [:about] do

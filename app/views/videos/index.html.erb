@@ -2,24 +2,33 @@
   <%= will_paginate @videos %>
 </div>
 
+<%= render "search_bar" %>
+
 <div class="container">
   <% @videos.each do |video| %>
-    <div class="row">
+    <div class="row panel panel-default">
 
-      <div class="col-sm-6 text-center">
-        <%= link_to video.title, video_path(video) %></br >
-        <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
-        <p>Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></p>
-        <p>Tags: <%= raw video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %></p>
+      <div class="col-sm-6 text-center panel">
+        <p class="panel-heading">
+          <%= link_to video.title, video_path(video) %>
+        </p>
+        <p class="panel-body">
+          <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
+        </p>
+        <p class="panel-footer">Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></br>
+        Tags: <%= raw video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %></p>
       </div>
 
-      <div class="col-sm-6 video-index">
+      <div class="col-sm-6 video-index panel">
         <% unless video.comments.last.nil? %>
-          <%= video.comments.last.user.username %>
+        <p class="panel-body">
           <%= video.comments.last.body %>
+        </p>
+        <p class="panel-footer">
+          Posted by: <%= video.comments.last.user.username %>, at: <%= video.comments.last.created_at %>
+        </p>
         <% end %>
       </div>
-
     </div>
   <% end %>
 </div>
