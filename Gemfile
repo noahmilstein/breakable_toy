@@ -1,6 +1,7 @@
 source 'https://rubygems.org/'
 ruby '2.3.1'
 
+gem 'react-bootstrap-rails'
 gem 'rails', '~> 5.0'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
