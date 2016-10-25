@@ -9,6 +9,12 @@ class VideosController < ApplicationController
     end
   end
 
+  def search
+    if params[:search]
+      @results = Video.tagged_with(params[:search])
+    end
+  end
+
   def show
     @video = Video.find(params[:id])
     @user = @video.user

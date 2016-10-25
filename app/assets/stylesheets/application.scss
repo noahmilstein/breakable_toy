@@ -9,9 +9,9 @@ body {
   overflow: scroll;
   margin: 0;
   padding:0;
-  height:100%;
-  min-height:100%;
+  min-height:400px;
   margin-bottom: 130px;
+  padding-bottom: 130px;
   clear: both;
 }
 
@@ -50,18 +50,12 @@ footer {
   bottom:0;
   clear: both;
   height: 130px;
-  position: relative;
+  position: absolute;
   width: 100%;
   z-index: 10;
-  a {
-    font-size: 110%;
-  }
-  a:hover {
-    color: #70db93;
-  }
-  a:link, a:visited {
-    color: #000000;
-  }
+  a { font-size: 110%; }
+  a:hover { color: #70db93; font-weight:bold; }
+  a:link, a:visited { color: #000000; }
 }
 
 .profile-pic img {
