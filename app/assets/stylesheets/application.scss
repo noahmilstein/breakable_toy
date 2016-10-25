@@ -4,6 +4,7 @@
 html {
   margin-top: -4%;
 }
+
 body {
   overflow: scroll;
   margin: 0;
@@ -45,15 +46,13 @@ div {
 }
 
 footer {
-  height: 130px;
   background-color: #49708A;
   bottom:0;
-  width:100%;
   clear: both;
+  height: 130px;
   position: relative;
+  width:100%;
   z-index: 10;
-  // height: 3em;
-  // margin-top: -3em;
 }
 
 .profile-pic img {
@@ -61,21 +60,12 @@ footer {
   width: auto;
 }
 
-// #home a:link { color: #70DB93; }
-// #home a:visited { color: #70DB93; }
-// #home a:hover { color: #70DB93; }
-// #home a:active { color: #70DB93; }
-
-footer a:link {
-  color: black;
-}
-
-footer a:visited {
-  color: black;
+footer a:link, a:visited {
+  color: #000000;
 }
 
 footer a:hover {
-  color: #70DB93;
+  color: #70db93;
 }
 
 footer a {
