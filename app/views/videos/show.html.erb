@@ -1,5 +1,5 @@
 <div class="video-show">
-  <%= @video.title %>
+  <i class="fa fa-youtube" aria-hidden="true"></i> | <%= @video.title %>
   <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
   <p>
     Tags: <%= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
