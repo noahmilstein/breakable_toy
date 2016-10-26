@@ -1,6 +1,5 @@
 <div class="container" style="width:35%">
   <% if current_user == @post.user || current_user.admin %>
-    <h3>Add video</h3>
     <div class="">
       <%= form_for [@post, @video] do |f| %>
         <div class="form-group row" style="margin:auto">

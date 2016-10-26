@@ -2,15 +2,15 @@
   <%= will_paginate @posts %>
 </div>
 
-<div class="show-log text-center">
+<div class="show-log text-center container" style="width:50%">
   <div class="">
     <h3> <%= @user.username %>'s Log</h3>
     <h3><%= link_to "Add new entry", new_user_post_path(@user) %></h3>
   </div>
 
-  <div class="container">
+  <div class="" >
     <% @posts.each do |post| %>
-      <div class="row panel panel-default" style="border:1px solid; padding: 10px; margin-bottom: 10px">
+      <div class="row panel panel-default" style="border:1px solid; padding: 10px; margin-bottom: 10px;">
         <p>
           <%= link_to post.title, post_path(post) %>
           (<%= post.date %>)

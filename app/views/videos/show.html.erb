@@ -1,6 +1,8 @@
-<div class="video-show">
+<div class="video-show text-center">
   <i class="fa fa-youtube" aria-hidden="true"></i> | <%= @video.title %>
-  <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
+  <p>
+    <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
+  </p>
   <p>
     Tags: <%= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
   </p>
@@ -14,7 +16,7 @@
   <%= link_to("Back to Index", videos_path) %>
 </div>
 
-<h3>Comments</h3>
+<h3 class="text-center">Comments</h3>
 
 <%= render "comment_form" %>
 

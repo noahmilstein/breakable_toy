@@ -1,24 +1,33 @@
-<div class="post-show">
-  <%= @post.title %>
-  <%= @post.date %>
-  <%= @post.body %>
-  <% if current_user == @post.user %>
-    <%= link_to "Edit Post", edit_post_path(@post) %> |
-    <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-</div>
-
-<div class="">
-<% @videos.each do |video| %>
-  <div class="">
-    <%= link_to video.title, video_path(video) %>
-    <% if current_user == video.user %>
-      <%= link_to "Edit Video", edit_video_path(video) %> |
-      <%= link_to "Delete Video", video_path(video), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="container" style="width:65%">
+  <div class="post-show text-center panel panel-default" style="margin:auto">
+    <p>
+      <%= @post.title %> (<%= @post.date %>)
+    </p>
+    <p>
+      <%= @post.body %>
+    </p>
+    <% if current_user == @post.user %>
+      <%= link_to "Edit Post", edit_post_path(@post) %> |
+      <%= link_to "Delete Post", @post, method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
-<% end %>
+
+  <div class="text-center" style="margin:auto">
+  <% @videos.each do |video| %>
+    <div class="panel panel-default">
+      <%= link_to video.title, video_path(video) %>
+      <% if current_user == video.user %>
+        <p>
+          <%= link_to "Edit Video", edit_video_path(video) %> |
+          <%= link_to "Delete Video", video_path(video), method: :delete, data: { confirm: "Are you sure?" } %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
 </div>
 
 <%= render "./videos/new" %>
-<%= link_to("Back", my_log_users_path) %>
+<div class="text-center">
+  <%= link_to("Back", my_log_users_path) %>
+</div>
