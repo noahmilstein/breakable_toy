@@ -60,6 +60,7 @@ class UsersController < ApplicationController
       :last_name,
       :username,
       :email,
+      :image,
       :phone,
       :state,
       :city,

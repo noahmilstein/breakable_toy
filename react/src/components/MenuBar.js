@@ -25,6 +25,7 @@ export default class MenuBar extends Component {
     }
 
     if (this.props.currentUser === false) {
+      image = <img src={avatar} alt="mustache" className="img-responsive pull-right" style={resize}/>
       if (this.props.admin === false) {
         indexUrl = "/users/coach_index"
         indexName = "Coach Index"
@@ -35,7 +36,6 @@ export default class MenuBar extends Component {
         loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
       }
       signOut = <Button bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
-      image = <img src={avatar} alt="mustache" className="img-responsive pull-right" style={resize}/>
       dropDown =  <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
                     <MenuItem eventKey="1" href='/home/about' id="aboutButton">About</MenuItem>
                     <MenuItem eventKey="2" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
