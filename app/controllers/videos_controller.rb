@@ -50,7 +50,6 @@ class VideosController < ApplicationController
   def edit
     @video = Video.find(params[:id])
     @post = @video.post
-    # #video.tag_list.compact.join(', ') #try this
   end
 
   def update

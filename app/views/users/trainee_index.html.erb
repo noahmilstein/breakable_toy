@@ -11,9 +11,9 @@
   <% end %>
 </div>
 
-<div class="coaches text-center">
+<div class="coaches text-center container" style="width:50%">
   <% @trainees.each do |trainee| %>
-    <div class="row callout">
+    <div class="row panel highlight">
       <%= trainee.username %><% if trainee.admin %>, SSC<% end %>
       <p>
         <%= trainee.first_name %>, <%= trainee.last_name %>

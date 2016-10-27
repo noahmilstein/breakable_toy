@@ -1,6 +1,6 @@
-<div class="container panel panel-default profile-container" style="width:100%; margin-top: 50px;">
+<div class="container panel profile-container highlight" style="width:100%; margin-top: 50px;">
   <div class="row">
-    <div class=" col-sm-6 my-profile panel" style="width:50%">
+    <div class=" col-sm-6 my-profile " style="width:50%">
       <p><%= @user.username %></p>
       <p><%= @user.first_name %> <%= @user.last_name %></p>
       <p><%= @user.email %></p>
@@ -17,7 +17,7 @@
         <% end %>
       </p>
     </div>
-    <div class=" col-sm-6 profile-pic panel" style="width:50%">
+    <div class=" col-sm-6 profile-pic " style="width:50%">
       <%= image_tag @user.image %>
     </div>
   </div>
