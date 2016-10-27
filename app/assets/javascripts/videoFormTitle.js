@@ -4,4 +4,4 @@ $(document).ready(function() {
   } else {
     $("#video-form").text("Add Video")
   }
-})
+});

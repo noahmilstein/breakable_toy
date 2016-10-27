@@ -8,7 +8,7 @@ FactoryGirl.define do
     password  Faker::Internet.password(6, 20)
     state  Faker::Address.state_abbr
     city  Faker::Address.city
-    image Faker::Avatar.image 
+    image Faker::Avatar.image
     sequence(:zip) { |n| "#{n}#{n}#{n}#{n}#{n}" }
     seeking_coach true
     accept_email true

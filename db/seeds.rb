@@ -41,5 +41,5 @@ FactoryGirl.create(
   user = FactoryGirl.create(:user)
   post = FactoryGirl.create(:post, user: user)
   video = FactoryGirl.create(:video, post: post, user: user)
-  comment = FactoryGirl.create(:comment, video: video, user: prof_frink )
+  FactoryGirl.create(:comment, video: video, user: prof_frink )
 end

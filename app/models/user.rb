@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   def self.search_coach(search)
     if search
-      where('admin AND (username LIKE ? OR city LIKE ? OR state LIKE ? OR zip LIKE ? OR first_name LIKE ? OR last_name LIKE ?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%" )
+      where('admin AND (username LIKE ? OR city LIKE ? OR state LIKE ? OR zip LIKE ? OR first_name LIKE ? OR last_name LIKE ?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%")
     else
       where(admin: true)
     end
