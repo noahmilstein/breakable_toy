@@ -2,7 +2,6 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
   after_create :set_coach, :welcome_email
 
-  # include Geocoder::Model::Mongoid #not sure if this is necessary
   geocoded_by :address
   after_validation :geocode, :if => :address_changed?
 
@@ -21,6 +20,14 @@ class User < ApplicationRecord
 
   def welcome_email
     NewUserEmailMailer.notify_user(self).deliver
+  end
+
+  def self.search_coach(search)
+    if search
+      where('admin AND (username LIKE ? OR city LIKE ? OR state LIKE ? OR zip LIKE ? OR first_name LIKE ? OR last_name LIKE ?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%" )
+    else
+      where(admin: true)
+    end
   end
 
   has_many :posts, dependent: :destroy

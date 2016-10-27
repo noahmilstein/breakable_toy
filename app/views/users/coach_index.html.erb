@@ -2,6 +2,15 @@
   <%= will_paginate @coaches %>
 </div>
 
+<div class="input-group" style="margin: auto">
+  <%= form_tag coach_index_users_path, method: 'get', class: 'navbar-form', role: 'search', id: "search-form" do %>
+    <span class="input-group-btn">
+      <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
+      <%= text_field_tag :search, "", placeholder: "Search coaches", class: 'form-control' %>
+    </span>
+  <% end %>
+</div>
+
 <div class="coaches text-center">
   <% @coaches.each do |coach| %>
     <div class="row callout">

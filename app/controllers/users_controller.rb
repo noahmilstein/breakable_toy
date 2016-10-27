@@ -2,7 +2,15 @@ class UsersController < ApplicationController
   before_action :authenticate_user, :configure_permitted_parameters, if: :devise_controller?
 
   def coach_index
-    @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+    if params[:search].nil?
+      @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+    elsif params[:search].strip.length.zero?
+      flash[:notice] = "Please enter search parameters!"
+      @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+    elsif params[:search]
+      final_search = params[:search].split.map(&:capitalize).join(' ')
+      @coaches = User.search_coach(final_search).page(params[:page]).per_page(10)
+    end
     @hash = Gmaps4rails.build_markers(@coaches) do |coach, marker|
       marker.lat coach.latitude
       marker.lng coach.longitude
