@@ -24,7 +24,15 @@ class UsersController < ApplicationController
   end
 
   def trainee_index
-    @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+    if params[:search].nil?
+      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+    elsif params[:search].strip.length.zero?
+      flash[:notice] = "Please enter search parameters!"
+      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+    elsif params[:search]
+      final_search = params[:search].split.map(&:capitalize).join(' ')
+      @trainees = User.search_trainees(final_search).page(params[:page]).per_page(10)
+    end
     @hash = Gmaps4rails.build_markers(@trainees) do |trainee, marker|
       marker.lat trainee.latitude
       marker.lng trainee.longitude

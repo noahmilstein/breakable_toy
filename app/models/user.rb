@@ -30,6 +30,14 @@ class User < ApplicationRecord
     end
   end
 
+  def self.search_trainees(search)
+    if search
+      where('seeking_coach AND (username LIKE ? OR city LIKE ? OR state LIKE ? OR zip LIKE ? OR first_name LIKE ? OR last_name LIKE ?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%" )
+    else
+      where(seeking_coach: true)
+    end
+  end
+
   has_many :posts, dependent: :destroy
   has_many :videos, through: :posts, dependent: :destroy
   has_many :comments
