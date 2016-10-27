@@ -88,7 +88,7 @@ class VideosController < ApplicationController
     params.require(:video).permit(
       :title,
       :url,
-      :tag_list,
+      tag_list: []
     )
   end
 end

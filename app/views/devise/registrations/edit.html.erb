@@ -2,7 +2,7 @@
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
-      <div class="form-group row" style="margin:auto">
+      <div class="form-group row">
         <div class="field">
           <%= f.label :first_name, "First Name" %><br />
           <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
@@ -48,6 +48,21 @@
           <%= f.file_field :image, id: "Add Avatar", class: "form-control" %>
         </div>
 
+        <div class="row">
+          <%= f.label :seeking_coach, "Are you seeking a coach?" %>
+          <%= f.check_box :seeking_coach, class: "form-control" %>
+        </div>
+
+        <div class="row">
+          <%= f.label :accept_email, "Can our coaches email you?" %>
+          <%= f.check_box :accept_email, class: "form-control" %>
+        </div>
+
+        <div class="row">
+          <%= f.label :accept_phone, "Can our coaches call or text you?" %>
+          <%= f.check_box :accept_phone, class: "form-control" %>
+        </div>
+
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
@@ -79,6 +94,7 @@
     <h3>Cancel my account</h3>
 
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-  <%= link_to "Back", :back %>
+  <div class="text-center">
+    <%= link_to "Back", :back %>
+  </div>
 </div>

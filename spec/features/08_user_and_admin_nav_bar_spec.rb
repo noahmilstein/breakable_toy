@@ -17,7 +17,6 @@ feature "user" do
     expect(page).to have_content(admin_user3.state)
     expect(page).to have_content(admin_user1.city)
     expect(page).to have_link("Send Email")
-    expect(page).to have_button("Send Text")
   end
 
   scenario "is coach, sees users seeking coaches as index in nav bar" do
@@ -28,7 +27,6 @@ feature "user" do
     expect(page).to have_content(user2.state)
     expect(page).to have_content(user3.city)
     expect(page).to have_link("Send Email")
-    expect(page).to have_button("Send Text")
   end
 
   scenario "is coach, signs up, switches admin boolean" do

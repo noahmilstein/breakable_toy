@@ -2,7 +2,7 @@
   <h2>Resend confirmation instructions</h2>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-    <div class="form-group row" style="margin:auto">
+    <div class="form-group row">
       <%= devise_error_messages! %>
 
       <div class="field">

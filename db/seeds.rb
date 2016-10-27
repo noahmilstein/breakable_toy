@@ -7,9 +7,39 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+4.times do
+  FactoryGirl.create(:user, admin: true)
+end
+
+prof_frink = FactoryGirl.create(
+  :user,
+  first_name: "Professor",
+  last_name: "Frink",
+  username: "Glavin",
+  email: "boston.strength.coach@gmail.com",
+  phone: "555-555-5555",
+  password: "password",
+  state: "MA",
+  city: "Boston",
+  zip: "02143"
+)
+
+FactoryGirl.create(
+  :user,
+  first_name: "John",
+  last_name: "Zoidberg",
+  username: "Doctorologist",
+  email: "zoidberg@zoidberg.com",
+  phone: "555-555-5555",
+  password: "password",
+  state: "NY",
+  city: "New York",
+  zip: "10282"
+)
+
 20.times do
   user = FactoryGirl.create(:user)
   post = FactoryGirl.create(:post, user: user)
   video = FactoryGirl.create(:video, post: post, user: user)
-  comment = FactoryGirl.create(:comment, video: video, user: user )
+  FactoryGirl.create(:comment, video: video, user: prof_frink)
 end

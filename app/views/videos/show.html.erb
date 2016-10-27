@@ -1,34 +1,43 @@
-<div class="video-show">
-  <%= @video.title %>
-  <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
-  <p>
-    Tags: <%= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
-  </p>
-  <% if current_user == @video.user %>
-    <%= link_to "Edit Video", edit_video_path(@video) %> |
-    <%= link_to "Delete Video", video_path(@video), method: :delete, data: { confirm: "Are you sure?" } %> |
-  <% end %>
-  <% if current_user == @video.user %>
-    <%= link_to("Back to Log", post_path(@post)) %> |
-  <% end %>
-  <%= link_to("Back to Index", videos_path) %>
+<div class="container text-center" style="width:50%; padding-top:50px;">
+  <div class="video-show panel">
+    <i class="fa fa-youtube" aria-hidden="true"></i> | <%= @video.title %>
+    <p>
+      <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{@video.embed_id}") %>
+    </p>
+    <p>
+      Tags: <%= raw @video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
+    </p>
+    <% if current_user == @video.user %>
+      <%= link_to "Edit Video", edit_video_path(@video) %> |
+      <%= link_to "Delete Video", video_path(@video), method: :delete, data: { confirm: "Are you sure?" } %> |
+    <% end %>
+    <% if current_user == @video.user %>
+      <%= link_to("Back to Log", post_path(@post)) %> |
+    <% end %>
+    <%= link_to("Back to Index", videos_path) %>
+  </div>
 </div>
 
-<h3>Comments</h3>
 
 <%= render "comment_form" %>
 
-<div class="comments">
-<% unless @comments.nil? %>
-  <% @comments.each do |comment| %>
-    <div class="comment">
-      <%= comment.body %>
-      <%= comment.user.username %>
-      <% if current_user == comment.user %>
-        <%= link_to "Edit Comment", edit_video_comment_path(comment.video, comment) %> |
-        <%= link_to "Delete Comment", video_comment_path(@video, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </div>
+<div class="comments text-center">
+  <% unless @comments.nil? %>
+  <h3 class="text-center">Comments</h3>
+    <% @comments.each do |comment| %>
+      <div class="comment highlight panel">
+        <p class="panel-body">
+          <%= comment.body %>
+        </p>
+        <p class="panel-footer">
+          <i class="fa fa-comment" aria-hidden="true"></i> |
+          Posted by: <%= comment.user.username %>, at: <%= comment.created_at %>
+        </p>
+        <% if current_user == comment.user %>
+          <%= link_to "Edit Comment", edit_video_comment_path(comment.video, comment) %> |
+          <%= link_to "Delete Comment", video_comment_path(@video, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
 </div>

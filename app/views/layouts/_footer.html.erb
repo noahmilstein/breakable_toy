@@ -1,14 +1,19 @@
 <div class="footer container">
   <div class="row links text-center" style="margin: 35px">
-    <div class="col-sm-4">
-      <p><%= link_to 'Starting Strength Coaches Association', "http://startingstrength.org" %></p>
-      <p><%= link_to 'Starting Strength', "http://startingstrength.com" %></p>
+    <div class="col-sm-6">
+      <p><%= link_to 'Starting Strength Coaches Association', "http://startingstrength.org", { class: "footer-link" } %></p>
+      <p><%= link_to 'Starting Strength', "http://startingstrength.com", { class: "footer-link" }  %></p>
+      <p><%= link_to "Contact Us", "mailto:coachrwebapp@gmail.com", { class: "footer-link" }  %></p>
     </div>
-    <div class="col-sm-4">
-      <p><%= link_to "Contact Us", "mailto:coachrwebapp@gmail.com" %></p>
+
+    <div class="col-sm-2">
+      <%= link_to '<i id="github" class="icon fa fa-2x fa-github" aria-hidden="true"></i>'.html_safe, "https://github.com/noahmilstein/breakable_toy" %>
     </div>
-    <div class="col-sm-4">
-      <p><%= link_to '<i class="fa fa-4x fa-github" aria-hidden="true"></i>'.html_safe, "https://github.com/noahmilstein/breakable_toy" %></p>
+    <div class="col-sm-2">
+      <%= link_to '<i id="facebook" class="icon fa fa-2x fa-facebook" aria-hidden="true"></i>'.html_safe, "https://www.facebook.com/Starting-Strength-The-Aasgaard-Company-142424022490628/" %>
+    </div>
+    <div class="col-sm-2">
+      <%= link_to '<i id="instagram" class="icon fa fa-2x fa-instagram" aria-hidden="true"></i>'.html_safe, "https://www.instagram.com/startingstrength/?hl=en" %>
     </div>
   </div>
 </div>

@@ -2,9 +2,18 @@
   <%= will_paginate @trainees %>
 </div>
 
-<div class="coaches text-center">
+<div class="input-group" style="margin: auto">
+  <%= form_tag trainee_index_users_path, method: 'get', class: 'navbar-form', role: 'search', id: "search-form" do %>
+    <span class="input-group-btn">
+      <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
+      <%= text_field_tag :search, "", placeholder: "Search trainees", class: 'form-control' %>
+    </span>
+  <% end %>
+</div>
+
+<div class="coaches text-center container" style="width:50%">
   <% @trainees.each do |trainee| %>
-    <div class="row callout">
+    <div class="row panel highlight">
       <%= trainee.username %><% if trainee.admin %>, SSC<% end %>
       <p>
         <%= trainee.first_name %>, <%= trainee.last_name %>
