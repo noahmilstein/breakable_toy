@@ -9,7 +9,7 @@ class Video < ActiveRecord::Base
   acts_as_taggable
 
   validates :url, presence: true
-  validates :url, format: { with: URI.regexp }, if: 'url.present?'
+  validates :url, format: { with: URI.regexp }, if: "url.present?"
 
   def self.search(search)
     videos = Video.tagged_with(search.to_s, :any => true)

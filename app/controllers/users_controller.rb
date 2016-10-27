@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Please enter search parameters!"
       @coaches = User.where(admin: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search]
-      final_search = params[:search].split.map(&:capitalize).join(' ')
+      final_search = params[:search].split.map(&:capitalize).join(" ")
       @coaches = User.search_coach(final_search).page(params[:page]).per_page(10).order("username")
     end
     @hash = Gmaps4rails.build_markers(@coaches) do |coach, marker|
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Please enter search parameters!"
       @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search]
-      final_search = params[:search].split.map(&:capitalize).join(' ')
+      final_search = params[:search].split.map(&:capitalize).join(" ")
       @trainees = User.search_trainees(final_search).page(params[:page]).per_page(10).order("username")
     end
     @hash = Gmaps4rails.build_markers(@trainees) do |trainee, marker|
