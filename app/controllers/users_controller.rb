@@ -3,13 +3,13 @@ class UsersController < ApplicationController
 
   def coach_index
     if params[:search].nil?
-      @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+      @coaches = User.where(admin: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search].strip.length.zero?
       flash[:notice] = "Please enter search parameters!"
-      @coaches = User.where(admin: true).page(params[:page]).per_page(10)
+      @coaches = User.where(admin: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search]
       final_search = params[:search].split.map(&:capitalize).join(' ')
-      @coaches = User.search_coach(final_search).page(params[:page]).per_page(10)
+      @coaches = User.search_coach(final_search).page(params[:page]).per_page(10).order("username")
     end
     @hash = Gmaps4rails.build_markers(@coaches) do |coach, marker|
       marker.lat coach.latitude
@@ -25,13 +25,13 @@ class UsersController < ApplicationController
 
   def trainee_index
     if params[:search].nil?
-      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search].strip.length.zero?
       flash[:notice] = "Please enter search parameters!"
-      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10)
+      @trainees = User.where(seeking_coach: true).page(params[:page]).per_page(10).order("username")
     elsif params[:search]
       final_search = params[:search].split.map(&:capitalize).join(' ')
-      @trainees = User.search_trainees(final_search).page(params[:page]).per_page(10)
+      @trainees = User.search_trainees(final_search).page(params[:page]).per_page(10).order("username")
     end
     @hash = Gmaps4rails.build_markers(@trainees) do |trainee, marker|
       marker.lat trainee.latitude
