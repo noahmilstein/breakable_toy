@@ -1,8 +1,10 @@
+<h2 class="text-center" id="video-form"></h2>
+
 <div class="container" style="width:35%">
   <% if current_user == @post.user || current_user.admin %>
     <div class="">
       <%= form_for [@post, @video] do |f| %>
-        <div class="form-group row" style="margin:auto">
+        <div class="form-group row">
           <div class="">
             <%= f.label(:title, "Video Title") %></br >
             <%= f.text_field :title, class: "form-control" %>

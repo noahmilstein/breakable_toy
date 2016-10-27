@@ -1,7 +1,7 @@
 <div class="container" style="width:50%">
   <% if current_user == @video.post.user || current_user.admin %>
     <%= form_for [@video, @comment] do |f| %>
-      <div class="form-group row" style="margin:auto">
+      <div class="form-group row">
         <div class="">
           <%= f.label(:body, "Comment") %>
           <%= f.text_area :body, class: "form-control" %>

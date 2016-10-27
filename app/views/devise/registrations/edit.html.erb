@@ -2,7 +2,7 @@
   <h2>Edit <%= resource_name.to_s.humanize %></h2>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= devise_error_messages! %>
-      <div class="form-group row" style="margin:auto">
+      <div class="form-group row">
         <div class="field">
           <%= f.label :first_name, "First Name" %><br />
           <%= f.text_field :first_name, autofocus: true, class: "form-control" %>

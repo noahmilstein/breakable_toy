@@ -1,5 +1,5 @@
-<div class="container" style="width:65%">
-  <div class="post-show text-center panel highlight" style="margin:auto">
+<div class="container post-show">
+  <div class="text-center panel highlight" style="margin:auto">
     <p>
       <%= @post.title %> (<%= @post.date %>)
     </p>
@@ -29,7 +29,9 @@
   </div>
 </div>
 
-<%= render "./videos/new" %>
-<div class="text-center">
-  <%= link_to("Back", my_log_users_path) %>
+<div class="highlight panel">
+  <%= render "./videos/new" %>
+  <div class="text-center">
+    <%= link_to("Back", my_log_users_path) %>
+  </div>
 </div>

@@ -4,13 +4,13 @@
 
 <div class="show-log text-center container" style="width:50%">
   <div class="">
-    <h3> <%= @user.username %>'s Log</h3>
+    <h3><%= @user.username %>'s Log</h3>
     <h3><%= link_to "Add new entry", new_user_post_path(@user) %></h3>
   </div>
 
   <div class="" >
     <% @posts.each do |post| %>
-      <div class="row panel" >
+      <div class="row panel highlight" >
         <p>
           <%= link_to post.title, post_path(post) %>
           (<%= post.date %>)

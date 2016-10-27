@@ -27,8 +27,8 @@ body {
 }
 
 .show-log {
-  margin: auto;
   width: 50%;
+  margin: auto;
   border: 3px;
   padding: 10px;
 }
@@ -79,14 +79,29 @@ footer {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
+div {
+  word-wrap: break-word;
+}
 
-// use this later
-// .card {
-//   border-radius: 5px;
-//   text-align: center;
-//   padding: 0px;
-//   transition: all 0.3s ease;
-// }
-// .card:hover {
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-// }
+.post-show {
+  width: 65%;
+  margin-top: 35px;
+}
+
+.post-form {
+  width: 35%;
+}
+
+.form-group {
+  margin: auto;
+}
+
+.about {
+  margin: 10px;
+  padding: 10px
+}
+
+.comments {
+  width: 50%;
+  margin: auto;
+}
