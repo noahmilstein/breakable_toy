@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="text-center">
+    <%= will_paginate @videos %>
+  </div>
+
+  <% @videos.each do |video| %>
+    <div class="row panel panel-default highlight video">
+
+      <div class="col-sm-6 text-center panel">
+        <p class="panel-heading">
+          <%= link_to video.title, video_path(video) %>
+        </p>
+        <p class="panel-body">
+          <%= content_tag(:iframe, nil, src: "//www.youtube.com/embed/#{video.embed_id}") %>
+        </p>
+        <p class="panel-footer">
+          <i class="fa fa-youtube" aria-hidden="true"></i> |
+          Created by: <%= video.user.username %>, at: <%= video.created_at.strftime("%e, %b, %Y, %H:%M:%S %p") %></br>
+          Tags: <%= raw video.tag_list.map { |t| link_to t, tag_path(t) }.join(", ") %>
+        </p>
+      </div>
+
+      <div class="col-sm-6 video-index panel">
+        <% unless video.comments.last.nil? %>
+        <p class="panel-body">
+          <%= video.comments.last.body %>
+        </p>
+        <p class="panel-footer">
+          <i class="fa fa-comment" aria-hidden="true"></i> |
+          Posted by: <%= video.comments.last.user.username %>, at: <%= video.comments.last.created_at %>
+        </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
