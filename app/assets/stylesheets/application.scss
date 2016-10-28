@@ -103,37 +103,37 @@ footer {
   width: 50%;
 }
 
-button.accordion {
+.accordion {
   background-color: #eee;
+  border: 0;
   color: #444;
   cursor: pointer;
   padding: 18px;
-  width: 100%;
   text-align: left;
-  border: none;
-  outline: none;
   transition: 0.4s;
+  width: 100%;
 }
 
-button.accordion.active, button.accordion:hover {
+.accordion.active,
+.accordion:hover {
   background-color: #ddd;
 }
 
-div.faq {
-  padding: 0 18px;
+.faq {
   background-color: white;
   max-height: 0;
-  overflow: hidden;
-  transition: 0.6s ease-in-out;
   opacity: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  transition: 0.6s ease-in-out;
 }
 
-div.panel.show {
+.faq.show {
   opacity: 1;
   max-height: 500px;
 }
 
-button.accordion:after {
+.accordion:after {
   content: '\02795';
   font-size: 13px;
   color: #777;
@@ -141,7 +141,7 @@ button.accordion:after {
   margin-left: 5px;
 }
 
-button.accordion.active:after {
+.accordion.active:after {
   content: "\2796";
 }
 
