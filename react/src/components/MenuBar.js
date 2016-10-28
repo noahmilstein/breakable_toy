@@ -27,25 +27,25 @@ export default class MenuBar extends Component {
       if (this.props.admin === false) {
         indexUrl = "/users/coach_index"
         indexName = "Coach Index"
-        loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as {userName} {image}</Button>
+        loggedInAs = <Button className="custom-font" bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as {userName} {image}</Button>
       } else {
         indexUrl = "/users/trainee_index"
         indexName = "Trainee Index"
-        loggedInAs = <Button bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
+        loggedInAs = <Button className="custom-font" bsStyle="primary" href="/users/show_profile" id="myProfileButton">Logged in as coach: {userName}{image}</Button>
       }
-      signOut = <Button bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
-      dropDown =  <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
-                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">About</MenuItem>
+      signOut = <Button className="custom-font" bsStyle="primary" href="/users/sign_out" data-method="delete">Sign Out</Button>
+      dropDown =  <DropdownButton className="custom-font" bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
+                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">FAQ</MenuItem>
                     <MenuItem eventKey="2" href='/users/show_profile' id="myProfileButton">My Profile</MenuItem>
                     <MenuItem eventKey="3" href='/users/show_log' id="myLogButton">My Log</MenuItem>
                     <MenuItem eventKey="4" href='/videos' id="videoIndexButton">Video Index</MenuItem>
                     <MenuItem eventKey="5" id="userIndexButton" href={indexUrl}>{indexName}</MenuItem>
                   </DropdownButton>
     } else {
-      signIn = <Button bsStyle="primary" href="/users/sign_in">Sign In</Button>
-      signUp = <Button bsStyle="primary" href="/users/sign_up">Sign Up</Button>
-      dropDown =  <DropdownButton bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
-                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">About</MenuItem>
+      signIn = <Button className="custom-font" bsStyle="primary" href="/users/sign_in">Sign In</Button>
+      signUp = <Button className="custom-font" bsStyle="primary" href="/users/sign_up">Sign Up</Button>
+      dropDown =  <DropdownButton className="custom-font" bsStyle="primary" title="Menu" id="dropdownButton" style={size}>
+                    <MenuItem eventKey="1" href='/home/about' id="aboutButton">FAQ</MenuItem>
                   </DropdownButton>
     }
 
@@ -53,7 +53,7 @@ export default class MenuBar extends Component {
       <div className="row">
         <ButtonToolbar bsStyle="primary" id="buttonToolBar" >
           <ButtonGroup id="buttonGroup" justified>
-            <Button bsStyle="primary" href='/' id="myProfileButton">Home</Button>
+            <Button className="custom-font" bsStyle="primary" href='/' id="myProfileButton">Coachr</Button>
             {dropDown}
             {loggedInAs}
             {signOut}
