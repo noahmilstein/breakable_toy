@@ -102,3 +102,49 @@ footer {
   margin: auto;
   width: 50%;
 }
+
+.accordion {
+  background-color: #eee;
+  border: 0;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  text-align: left;
+  transition: 0.4s;
+  width: 100%;
+}
+
+.accordion.active,
+.accordion:hover {
+  background-color: #ddd;
+}
+
+.faq {
+  background-color: #ffffff;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  transition: 0.6s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.accordion:after {
+  content: '\02795';
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.accordion.active:after {
+  content: "\2796";
+}
+
+.custom-font {
+  font-family: 'Lobster', cursive;
+}
