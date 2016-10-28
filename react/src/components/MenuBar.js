@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { ButtonToolbar, ButtonGroup, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 
 export default class MenuBar extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
     let signOut = ""
     let signIn = ""

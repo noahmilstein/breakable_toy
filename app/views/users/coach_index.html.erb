@@ -1,14 +1,14 @@
-<div class="text-center">
-  <%= will_paginate @coaches %>
-</div>
-
 <div class="input-group" style="margin: auto">
   <%= form_tag coach_index_users_path, method: 'get', class: 'navbar-form', role: 'search', id: "search-form" do %>
-    <span class="input-group-btn">
-      <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
-      <%= text_field_tag :search, "", placeholder: "Search coaches", class: 'form-control' %>
-    </span>
+  <span class="input-group-btn">
+    <%= submit_tag "Search", name: nil, class: 'btn btn-default' %>
+    <%= text_field_tag :search, "", placeholder: "Search coaches", class: 'form-control' %>
+  </span>
   <% end %>
+</div>
+
+<div class="text-center">
+  <%= will_paginate @coaches %>
 </div>
 
 <div class="coaches text-center container" style="width:50%">
